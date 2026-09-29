@@ -21,7 +21,12 @@ echo "### start point: round-1 single file -> diffusers layout (fp32 for trainin
 [ -d base/unet ] || python - <<'EOF'
 from diffusers import StableDiffusionPipeline
 import torch
-pipe = StableDiffusionPipeline.from_single_file("/workspace/be/r1/pagouro-be-r1-fp16.safetensors", torch_dtype=torch.float32, safety_checker=None)
+# the SD2 config repos on the Hub are gated (401) and the single file's text encoder does not map back through
+# diffusers' loader; only the UNet changed in round 1, so: base pipeline from CommonCanvas (config, text encoder,
+# VAE) + the round-1 UNet weights read out of the single file.
+from diffusers import UNet2DConditionModel
+pipe = StableDiffusionPipeline.from_pretrained("common-canvas/CommonCanvas-S-C", torch_dtype=torch.float32, safety_checker=None)
+pipe.unet = UNet2DConditionModel.from_single_file("/workspace/be/r1/pagouro-be-r1-fp16.safetensors", config="common-canvas/CommonCanvas-S-C", subfolder="unet", torch_dtype=torch.float32)
 pipe.save_pretrained("/workspace/be/base")
 print("start point saved; prediction", pipe.scheduler.config.get("prediction_type"))
 EOF
