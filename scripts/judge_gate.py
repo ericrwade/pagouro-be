@@ -26,6 +26,19 @@ RUBRIC = ("You are judging a generated picture against the caption it was made f
           "hand-drawn lettering, poster paper), false if it looks like a photograph, a 3D render, or a modern digital painting.\n"
           "text: {text_rule}\n"
           "note: one short sentence saying what you actually see.")
+# v2 (D-99): the subject of a lettering caption is the word itself; a fourth item counts lettering nobody asked for.
+RUBRIC_V2 = ("You are judging a generated picture against the caption it was made from. Be strict.\n"
+             "Caption: {caption}\n"
+             "Answer in JSON only, with keys subject, style, text, unasked_lettering, note.\n"
+             "subject: true only if the main thing the caption asks for is clearly recognisable in the picture as a person "
+             "would name it (a crab that looks like a lobster is false; a cat that is clearly a cat is true). "
+             "{subject_rule}\n"
+             "style: true if the picture looks like a lithographic poster of around 1900 (flat colour planes, bold outlines, "
+             "poster paper), false if it looks like a photograph, a 3D render, or a modern digital painting.\n"
+             "text: {text_rule}\n"
+             "unasked_lettering: true if the picture contains any lettering, words or word-like marks that the caption did "
+             "not ask for (a title band, a caption line, a signature block); false if the only lettering is what the caption asked for, or there is none.\n"
+             "note: one short sentence saying what you actually see.")
 
 
 def load_key():
@@ -47,12 +60,14 @@ def b64(path, max_side=512):
     return base64.b64encode(b.getvalue()).decode()
 
 
-def judge_one(key, model, path, caption, expect_text, tries=3):
+def judge_one(key, model, path, caption, expect_text, tries=3, rubric="v1"):
     text_rule = ("the caption asks for specific words; true if those words are legible in the picture, false if not"
                  if expect_text else "null (the caption asked for no specific words)")
     body = {"model": model, "max_tokens": 160, "temperature": 0.0,
             "messages": [{"role": "user", "content": [
-                {"type": "text", "text": RUBRIC.format(caption=caption, text_rule=text_rule)},
+                {"type": "text", "text": (RUBRIC_V2.format(caption=caption, text_rule=text_rule, subject_rule=(
+                    "This caption asks for a specific word: subject is true ONLY if that word itself is legible in the picture." if expect_text else ""))
+                    if rubric == "v2" else RUBRIC.format(caption=caption, text_rule=text_rule))},
                 {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{b64(path)}"}}]}]}
     for i in range(tries):
         try:
@@ -65,6 +80,7 @@ def judge_one(key, model, path, caption, expect_text, tries=3):
             txt = txt[txt.find("{"): txt.rfind("}") + 1]
             v = json.loads(txt)
             return {"subject": bool(v.get("subject")), "style": bool(v.get("style")),
+                    "unasked_lettering": (bool(v.get("unasked_lettering")) if rubric == "v2" else None),
                     "text": (None if v.get("text") is None else bool(v.get("text"))), "note": str(v.get("note", ""))[:200],
                     "usage": {k: d.get("usage", {}).get(k) for k in ("prompt_tokens", "completion_tokens")}}
         except Exception as e:  # noqa: BLE001
@@ -78,6 +94,7 @@ def main():
     ap.add_argument("--gate-dir", required=True)
     ap.add_argument("--arms", nargs="+", default=["base", "ft", "lora"])
     ap.add_argument("--model", default="google/gemini-2.5-flash")
+    ap.add_argument("--rubric", default="v1", choices=["v1", "v2"])
     ap.add_argument("--workers", type=int, default=4)
     a = ap.parse_args()
     key = load_key()
@@ -86,7 +103,7 @@ def main():
         d = os.path.join(a.gate_dir, arm)
         meta = json.load(open(os.path.join(d, "meta.json"), encoding="utf-8"))
         gate = {json.loads(l)["id"]: json.loads(l) for l in io.open(os.path.join(os.path.dirname(HERE), "evals", "gate40.jsonl"), encoding="utf-8")}
-        out_path = os.path.join(a.gate_dir, f"verdicts_{arm}.jsonl")
+        out_path = os.path.join(a.gate_dir, f"verdicts_{arm}{'_v2' if a.rubric == 'v2' else ''}.jsonl")
         done = {}
         if os.path.exists(out_path):
             for l in io.open(out_path, encoding="utf-8"):
@@ -95,7 +112,7 @@ def main():
         todo = [m for m in meta if m["file"] not in done]
         print(f"{arm}: {len(done)} judged, {len(todo)} to judge with {a.model}", flush=True)
         with io.open(out_path, "a", encoding="utf-8", newline="\n") as out, cf.ThreadPoolExecutor(a.workers) as ex:
-            futs = {ex.submit(judge_one, key, a.model, os.path.join(d, m["file"]), m["caption"], gate[m["id"]]["expect_text"]): m for m in todo}
+            futs = {ex.submit(judge_one, key, a.model, os.path.join(d, m["file"]), m["caption"], gate[m["id"]]["expect_text"], rubric=a.rubric): m for m in todo}
             for f in cf.as_completed(futs):
                 m = futs[f]
                 v = f.result()
@@ -106,28 +123,29 @@ def main():
                 out.write(json.dumps(r, ensure_ascii=False) + "\n")
                 out.flush()
                 done[m["file"]] = r
-        agg = defaultdict(lambda: {"n": 0, "subject": 0, "style": 0, "text_n": 0, "text": 0})
+        agg = defaultdict(lambda: {"n": 0, "subject": 0, "style": 0, "text_n": 0, "text": 0, "unasked": 0})
         for r in done.values():
             for g in (r["group"], "ALL"):
                 x = agg[g]
                 x["n"] += 1
                 x["subject"] += r["subject"]
                 x["style"] += r["style"]
+                x["unasked"] += bool(r.get("unasked_lettering"))
                 if r["text"] is not None:
                     x["text_n"] += 1
                     x["text"] += r["text"]
         summary[arm] = dict(agg)
-    lines = ["| arm | group | n | subject | style | legible text |", "|---|---|---|---|---|---|"]
+    lines = ["| arm | group | n | subject | style | legible text | unasked lettering |", "|---|---|---|---|---|---|---|"]
     for arm in a.arms:
         for g in ["ALL", "people", "animals", "objects", "places", "lettering", "impossible"]:
             x = summary[arm].get(g)
             if not x:
                 continue
             t = f"{x['text']}/{x['text_n']}" if x["text_n"] else "—"
-            lines.append(f"| {arm} | {g} | {x['n']} | {x['subject']}/{x['n']} ({100*x['subject']/x['n']:.0f} %) | {x['style']}/{x['n']} ({100*x['style']/x['n']:.0f} %) | {t} |")
+            lines.append(f"| {arm} | {g} | {x['n']} | {x['subject']}/{x['n']} ({100*x['subject']/x['n']:.0f} %) | {x['style']}/{x['n']} ({100*x['style']/x['n']:.0f} %) | {t} | {x['unasked']}/{x['n']} ({100*x['unasked']/x['n']:.0f} %) |")
     md = "\n".join(lines)
     print(md)
-    io.open(os.path.join(a.gate_dir, "summary.md"), "w", encoding="utf-8", newline="\n").write(f"# Gate summary — judge {a.model}, {time.strftime('%Y-%m-%d')}\n\n{md}\n")
+    io.open(os.path.join(a.gate_dir, "summary_v2.md" if a.rubric == "v2" else "summary.md"), "w", encoding="utf-8", newline="\n").write(f"# Gate summary — judge {a.model}, {time.strftime('%Y-%m-%d')}\n\n{md}\n")
     return 0
 
 

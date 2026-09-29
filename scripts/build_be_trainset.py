@@ -55,6 +55,7 @@ def main():
     ap.add_argument("--min-contrast", type=float, default=18.0)
     ap.add_argument("--tall", type=float, default=1.3)
     ap.add_argument("--require-caption", action="store_true", help="drop rows without a content caption")
+    ap.add_argument("--lettering-suffix", action="store_true", help="round 2: append ', no lettering' when the content caption mentions no words (D-99)")
     a = ap.parse_args()
     from PIL import Image
 
@@ -122,6 +123,8 @@ def main():
                 crops.append(("t", ((w - side) // 2, 0, (w - side) // 2 + side, side)))
             body = r["content"] or r["title"]
             cap = f"{TRIGGER}, Belle Époque lithograph poster, {clean(body, 200)}" + (f", by {r['artist']}" if r["artist"] else "") + (f", {r['year']}" if r["year"] else "")
+            if a.lettering_suffix and r["content"] and not re.search(r'["“”]|\b(letter|lettering|text|word|reads|inscri|title|caption|sign)\w*', r["content"], re.I):
+                cap += ", no lettering"
             for tag, box in crops:
                 sq = im.crop(box).resize((a.size, a.size), Image.LANCZOS)
                 g = sq.convert("L")
