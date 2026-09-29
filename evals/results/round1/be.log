@@ -1,0 +1,56 @@
+### setup 2026-09-29T16:45:06Z
+[notice] To update, run: python -m pip install --upgrade pip
+torch 2.4.1+cu124 cuda True NVIDIA A100-SXM4-80GB
+81920 MiB
+### base model (CommonCanvas-S-C, CC-BY-SA-4.0) -> diffusers fp32 on disk
+The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Fetching 13 files:   0%|          | 0/13 [00:00<?, ?it/s]Fetching 13 files:  62%|██████▏   | 8/13 [00:00<00:00, 47.72it/s]Fetching 13 files: 100%|██████████| 13/13 [00:10<00:00,  1.29it/s]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  17%|█▋        | 1/6 [00:00<00:01,  3.63it/s]Loading pipeline components...:  50%|█████     | 3/6 [00:00<00:00,  7.69it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00, 12.61it/s]
+unet params M 865.910724 text enc M 340.38784
+scheduler epsilon
+training images: 3969
+### arm A: full UNet fine-tune, 5000 steps 2026-09-29T16:45:45Z
+Configuration saved in /workspace/be/out/ft/unet/config.json
+Model weights saved in /workspace/be/out/ft/unet/diffusion_pytorch_model.safetensors
+Configuration saved in /workspace/be/out/ft/scheduler/scheduler_config.json
+Configuration saved in /workspace/be/out/ft/model_index.json
+Steps: 100%|██████████| 5000/5000 [1:04:17<00:00,  1.30it/s, lr=0, step_loss=0.0884]
+### arm B: LoRA rank 64, 2000 steps 2026-09-29T17:50:16Z
+09/29/2026 18:00:05 - INFO - accelerate.checkpointing - Random states saved in /workspace/be/out/lora/checkpoint-2000/random_states_0.pkl
+Model weights saved in /workspace/be/out/lora/checkpoint-2000/pytorch_lora_weights.safetensors
+09/29/2026 18:00:05 - INFO - __main__ - Saved state to /workspace/be/out/lora/checkpoint-2000
+Steps: 100%|██████████| 2000/2000 [09:38<00:00,  3.48it/s, lr=0, step_loss=0.144]       Model weights saved in /workspace/be/out/lora/pytorch_lora_weights.safetensors
+Steps: 100%|██████████| 2000/2000 [09:38<00:00,  3.46it/s, lr=0, step_loss=0.144]
+### gate: 40 captions x 4 seeds x {base, ft, lora} 2026-09-29T18:00:07Z
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  17%|█▋        | 1/6 [00:24<02:02, 24.50s/it]Loading pipeline components...:  33%|███▎      | 2/6 [00:30<00:53, 13.35s/it]Loading pipeline components...:  50%|█████     | 3/6 [00:42<00:38, 12.77s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:42<00:00,  7.03s/it]
+base 160 images 166s
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  17%|█▋        | 1/6 [00:24<02:02, 24.56s/it]Loading pipeline components...:  33%|███▎      | 2/6 [00:30<00:53, 13.43s/it]Loading pipeline components...:  50%|█████     | 3/6 [00:42<00:39, 13.03s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:42<00:00,  7.13s/it]
+ft 160 images 164s
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  17%|█▋        | 1/6 [00:25<02:07, 25.43s/it]Loading pipeline components...:  33%|███▎      | 2/6 [00:31<00:55, 13.79s/it]Loading pipeline components...:  50%|█████     | 3/6 [00:44<00:40, 13.51s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:44<00:00,  7.38s/it]
+lora 160 images 231s
+### single-file SD2 checkpoint of arm A (fp16) for stable-diffusion.cpp 2026-09-29T18:12:27Z
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  33%|███▎      | 2/6 [00:00<00:00, 13.75it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00, 11.31it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00, 11.51it/s]
+ft_pipe saved
+Renaming decoder.mid.attn_1.to_k.bias to decoder.mid.attn_1.k.bias
+Renaming decoder.mid.attn_1.to_k.weight to decoder.mid.attn_1.k.weight
+Renaming decoder.mid.attn_1.to_out.0.bias to decoder.mid.attn_1.proj_out.bias
+Renaming decoder.mid.attn_1.to_out.0.weight to decoder.mid.attn_1.proj_out.weight
+Renaming decoder.mid.attn_1.to_q.bias to decoder.mid.attn_1.q.bias
+Renaming decoder.mid.attn_1.to_q.weight to decoder.mid.attn_1.q.weight
+Renaming decoder.mid.attn_1.to_v.bias to decoder.mid.attn_1.v.bias
+Renaming decoder.mid.attn_1.to_v.weight to decoder.mid.attn_1.v.weight
+Renaming encoder.mid.attn_1.to_k.bias to encoder.mid.attn_1.k.bias
+Renaming encoder.mid.attn_1.to_k.weight to encoder.mid.attn_1.k.weight
+Renaming encoder.mid.attn_1.to_out.0.bias to encoder.mid.attn_1.proj_out.bias
+Renaming encoder.mid.attn_1.to_out.0.weight to encoder.mid.attn_1.proj_out.weight
+Renaming encoder.mid.attn_1.to_q.bias to encoder.mid.attn_1.q.bias
+Renaming encoder.mid.attn_1.to_q.weight to encoder.mid.attn_1.q.weight
+Renaming encoder.mid.attn_1.to_v.bias to encoder.mid.attn_1.v.bias
+Renaming encoder.mid.attn_1.to_v.weight to encoder.mid.attn_1.v.weight
+total 2519600
+-rw------- 1 root root 2580068398 Sep 29 18:13 pagouro-be-r1-fp16.safetensors
+### contact sheets + hashes
+sheets ok
+11G	.
+BE_ROUND1_DONE 2026-09-29T18:14:13Z
