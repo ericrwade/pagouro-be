@@ -1,0 +1,85 @@
+# Secrets — never commit
+API_KEYS*.txt
+*API_KEY*
+*_KEYS_*.txt
+*.secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Node
+node_modules/
+npm-debug.log*
+.pnpm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Local scratch
+scratch/
+*.local
+
+# Build artifacts and large data
+data/
+checkpoints/
+runs/
+*.gguf
+*.safetensors
+llama.cpp/
+
+# Eric's private working files - decide per file before committing
+My_Claude_Conversation.txt
+
+# Third-party binaries: downloaded, never committed (git history is permanent)
+tools/llamacpp/
+
+# Baseline models: downloaded, not committed
+data/baselines/
+
+# Ablation pilot working data
+data/ablation/
+
+# Build artifact assembled by master_pipeline.sh stage 10; everything in it is copied from elsewhere in the repo or from tools/.
+release/
+
+# The origin design transcript is PRIVATE (D-52). docs/ORIGIN.md is the public story.
+My_Claude_Conversation.txt
+workspace/notes/
+workspace/transcripts/
+# the user's own documents (D-79)
+workspace/docs/
+build/
+tools/teacher/
+packs/index.json
+tools/embed/
+workspace/online.json
+tools/ocr/
+skills/last_test.json
+runs/jev_usage.log
+# the ten brand concepts stay local (31 MB); the chosen one and the contact sheet are tracked
+brand/concepts/*
+!brand/concepts/_contact_sheet.jpg
+Pagouro_All_Concepts.zip
+data/out_1b/
+data/
+runs/
+tools/
+release/
+*.gguf
+*.safetensors
+*.pt
