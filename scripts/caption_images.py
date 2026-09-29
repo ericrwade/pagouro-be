@@ -81,11 +81,13 @@ def main():
     todo = []
     for line in io.open(a.ledger, encoding="utf-8"):
         r = json.loads(line)
-        if r["id"] in done:
+        rid = r.get("id") or (f"met_{r['objectID']}" if "objectID" in r else r["item_url"].rstrip("/").rsplit("/", 1)[-1])
+        if rid in done:
             continue
-        p = os.path.join(folder, r["file"])
-        if os.path.exists(p):
-            todo.append((r["id"], p))
+        cands = [os.path.join(folder, r["file"]), os.path.join(folder, "..", "..", r["file"]), r["file"]]
+        p = next((c for c in cands if os.path.exists(c)), None)
+        if p:
+            todo.append((rid, p))
     todo = todo[:a.cap]
     print(f"{len(done):,} captioned already; {len(todo):,} to do with {a.model}", flush=True)
     n = 0
