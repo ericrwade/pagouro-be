@@ -1,0 +1,43 @@
+### setup 2026-09-29T19:27:53Z
+[notice] To update, run: python -m pip install --upgrade pip
+NVIDIA A100-SXM4-80GB, 81920 MiB
+### start point: round-1 single file -> diffusers layout (fp32 for training)
+Fetching 13 files:   0%|          | 0/13 [00:00<?, ?it/s]Fetching 13 files:  85%|████████▍ | 11/13 [00:05<00:00,  2.01it/s]Fetching 13 files: 100%|██████████| 13/13 [00:10<00:00,  1.21it/s]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  17%|█▋        | 1/6 [00:00<00:01,  4.25it/s]Loading pipeline components...:  67%|██████▋   | 4/6 [00:00<00:00,  9.98it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00, 13.32it/s]
+start point saved; prediction epsilon
+training images: 4120
+538
+### full UNet fine-tune from round 1, 8000 steps 2026-09-29T19:28:34Z
+Configuration saved in /workspace/be/out/ft/unet/config.json
+Model weights saved in /workspace/be/out/ft/unet/diffusion_pytorch_model.safetensors
+Configuration saved in /workspace/be/out/ft/scheduler/scheduler_config.json
+Configuration saved in /workspace/be/out/ft/model_index.json
+Steps: 100%|██████████| 8000/8000 [1:42:44<00:00,  1.30it/s, lr=0, step_loss=0.0593]
+### gate: ft plain + ft with lettering negative 2026-09-29T21:11:31Z
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  67%|██████▋   | 4/6 [00:05<00:02,  1.27s/it]Loading pipeline components...:  83%|████████▎ | 5/6 [00:16<00:03,  3.87s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:38<00:00,  8.85s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:38<00:00,  6.39s/it]
+ft 160 images 169s
+ft_neg 160 images 171s
+### single-file SD2 checkpoint (fp16) 2026-09-29T21:18:18Z
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  67%|██████▋   | 4/6 [00:00<00:00, 16.17it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00, 15.34it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00, 15.49it/s]
+ft_pipe saved
+Renaming decoder.mid.attn_1.to_k.bias to decoder.mid.attn_1.k.bias
+Renaming decoder.mid.attn_1.to_k.weight to decoder.mid.attn_1.k.weight
+Renaming decoder.mid.attn_1.to_out.0.bias to decoder.mid.attn_1.proj_out.bias
+Renaming decoder.mid.attn_1.to_out.0.weight to decoder.mid.attn_1.proj_out.weight
+Renaming decoder.mid.attn_1.to_q.bias to decoder.mid.attn_1.q.bias
+Renaming decoder.mid.attn_1.to_q.weight to decoder.mid.attn_1.q.weight
+Renaming decoder.mid.attn_1.to_v.bias to decoder.mid.attn_1.v.bias
+Renaming decoder.mid.attn_1.to_v.weight to decoder.mid.attn_1.v.weight
+Renaming encoder.mid.attn_1.to_k.bias to encoder.mid.attn_1.k.bias
+Renaming encoder.mid.attn_1.to_k.weight to encoder.mid.attn_1.k.weight
+Renaming encoder.mid.attn_1.to_out.0.bias to encoder.mid.attn_1.proj_out.bias
+Renaming encoder.mid.attn_1.to_out.0.weight to encoder.mid.attn_1.proj_out.weight
+Renaming encoder.mid.attn_1.to_q.bias to encoder.mid.attn_1.q.bias
+Renaming encoder.mid.attn_1.to_q.weight to encoder.mid.attn_1.q.weight
+Renaming encoder.mid.attn_1.to_v.bias to encoder.mid.attn_1.v.bias
+Renaming encoder.mid.attn_1.to_v.weight to encoder.mid.attn_1.v.weight
+total 2519600
+-rw------- 1 root root 2580068398 Sep 29 21:19 pagouro-be-r2-fp16.safetensors
+sheets ok
+6.6G	.
+BE_ROUND2_DONE 2026-09-29T21:19:40Z
