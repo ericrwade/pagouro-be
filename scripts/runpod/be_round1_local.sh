@@ -29,7 +29,7 @@ case "$cmd" in
   home)
     dest="$BE/runs/round1"; mkdir -p "$dest"
     sshp "grep -c BE_ROUND1_DONE /workspace/be/be.log" || { echo "not done"; exit 1; }
-    sshp "cd /workspace/be/out && tar -cf - --exclude=ft SHA256SUMS gate lora ft_single train_ft.log train_lora.log" | tar -xf - -C "$dest"
+    sshp "cd /workspace/be/out && tar -cf - --exclude=./ft --exclude='lora/checkpoint-*' SHA256SUMS gate lora ft_single train_ft.log train_lora.log" | tar -xf - -C "$dest"
     scpp "root@$ip:/workspace/be/be.log" "$dest/"
     (cd "$dest" && grep -v " ./ft/" SHA256SUMS | sha256sum -c --quiet && echo "hashes OK: $(grep -vc ' ./ft/' SHA256SUMS) files")
     du -sh "$dest"
