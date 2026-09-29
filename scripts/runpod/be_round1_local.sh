@@ -21,7 +21,7 @@ case "$cmd" in
     sshp "mkdir -p /workspace/be/train /workspace/be/out"
     scpp "$tar_path" "root@$ip:/workspace/be/train.tar"
     scpp "$BE/evals/gate40.jsonl" "$BE/scripts/runpod/be_train.sh" "root@$ip:/workspace/be/"
-    sshp "cd /workspace/be && tar -xf train.tar -C train && rm train.tar && ls train/512 | wc -l && sed -i 's/\r$//' be_train.sh && ( nohup bash be_train.sh > be.log 2>&1 & ) && sleep 2 && echo launched"
+    sshp "cd /workspace/be && tar --no-same-owner -xf train.tar -C train && rm train.tar && ls train/512 | wc -l && sed -i 's/\r$//' be_train.sh && ( nohup bash be_train.sh > be.log 2>&1 & ) && sleep 2 && echo launched"
     ;;
   log)
     sshp "tail -n 25 /workspace/be/be.log; nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader"
