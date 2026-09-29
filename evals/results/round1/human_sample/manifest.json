@@ -1,0 +1,402 @@
+[
+ {
+  "n": 0,
+  "thumb": "00.jpg",
+  "arm": "lora",
+  "file": "g18_s2.png",
+  "id": "g18",
+  "group": "objects",
+  "caption": "a hot-air balloon over rooftops",
+  "expect_text": false
+ },
+ {
+  "n": 1,
+  "thumb": "01.jpg",
+  "arm": "base",
+  "file": "g13_s2.png",
+  "id": "g13",
+  "group": "animals",
+  "caption": "a peacock with its tail spread",
+  "expect_text": false
+ },
+ {
+  "n": 2,
+  "thumb": "02.jpg",
+  "arm": "lora",
+  "file": "g32_s1.png",
+  "id": "g32",
+  "group": "lettering",
+  "caption": "a caf\u00e9 sign that reads CAFE above a doorway",
+  "expect_text": true
+ },
+ {
+  "n": 3,
+  "thumb": "03.jpg",
+  "arm": "lora",
+  "file": "g19_s2.png",
+  "id": "g19",
+  "group": "objects",
+  "caption": "a bowl of oranges on a table",
+  "expect_text": false
+ },
+ {
+  "n": 4,
+  "thumb": "04.jpg",
+  "arm": "lora",
+  "file": "g22_s0.png",
+  "id": "g22",
+  "group": "places",
+  "caption": "a seaside promenade with bathing huts",
+  "expect_text": false
+ },
+ {
+  "n": 5,
+  "thumb": "05.jpg",
+  "arm": "ft",
+  "file": "g24_s1.png",
+  "id": "g24",
+  "group": "places",
+  "caption": "a lighthouse on a rocky coast at dusk",
+  "expect_text": false
+ },
+ {
+  "n": 6,
+  "thumb": "06.jpg",
+  "arm": "base",
+  "file": "g34_s1.png",
+  "id": "g34",
+  "group": "impossible",
+  "caption": "a jet airliner taking off",
+  "expect_text": false
+ },
+ {
+  "n": 7,
+  "thumb": "07.jpg",
+  "arm": "ft",
+  "file": "g16_s2.png",
+  "id": "g16",
+  "group": "objects",
+  "caption": "a bicycle leaning against a lamp post",
+  "expect_text": false
+ },
+ {
+  "n": 8,
+  "thumb": "08.jpg",
+  "arm": "base",
+  "file": "g25_s3.png",
+  "id": "g25",
+  "group": "places",
+  "caption": "a bridge over a river with a city behind it",
+  "expect_text": false
+ },
+ {
+  "n": 9,
+  "thumb": "09.jpg",
+  "arm": "base",
+  "file": "g07_s1.png",
+  "id": "g07",
+  "group": "people",
+  "caption": "a singer in a black dress with long gloves, one hand raised",
+  "expect_text": false
+ },
+ {
+  "n": 10,
+  "thumb": "10.jpg",
+  "arm": "ft",
+  "file": "g10_s2.png",
+  "id": "g10",
+  "group": "animals",
+  "caption": "a hermit crab retreated into its shell",
+  "expect_text": false
+ },
+ {
+  "n": 11,
+  "thumb": "11.jpg",
+  "arm": "ft",
+  "file": "g03_s0.png",
+  "id": "g03",
+  "group": "people",
+  "caption": "a dancer on stage kicking one leg high, with a crowd below",
+  "expect_text": false
+ },
+ {
+  "n": 12,
+  "thumb": "12.jpg",
+  "arm": "ft",
+  "file": "g36_s0.png",
+  "id": "g36",
+  "group": "impossible",
+  "caption": "a rocket launching to the moon",
+  "expect_text": false
+ },
+ {
+  "n": 13,
+  "thumb": "13.jpg",
+  "arm": "base",
+  "file": "g31_s3.png",
+  "id": "g31",
+  "group": "lettering",
+  "caption": "a medallion with the word PAGOURO around a hermit crab",
+  "expect_text": true
+ },
+ {
+  "n": 14,
+  "thumb": "14.jpg",
+  "arm": "lora",
+  "file": "g39_s1.png",
+  "id": "g39",
+  "group": "impossible",
+  "caption": "a television set in a living room",
+  "expect_text": false
+ },
+ {
+  "n": 15,
+  "thumb": "15.jpg",
+  "arm": "base",
+  "file": "g05_s1.png",
+  "id": "g05",
+  "group": "people",
+  "caption": "a woman riding a bicycle with her hat tied on",
+  "expect_text": false
+ },
+ {
+  "n": 16,
+  "thumb": "16.jpg",
+  "arm": "lora",
+  "file": "g02_s2.png",
+  "id": "g02",
+  "group": "people",
+  "caption": "a man with a moustache reading a newspaper at a caf\u00e9 table",
+  "expect_text": false
+ },
+ {
+  "n": 17,
+  "thumb": "17.jpg",
+  "arm": "base",
+  "file": "g37_s2.png",
+  "id": "g37",
+  "group": "impossible",
+  "caption": "a robot serving drinks at a bar",
+  "expect_text": false
+ },
+ {
+  "n": 18,
+  "thumb": "18.jpg",
+  "arm": "ft",
+  "file": "g01_s1.png",
+  "id": "g01",
+  "group": "people",
+  "caption": "a woman in a long dress holding a parasol, walking in a park",
+  "expect_text": false
+ },
+ {
+  "n": 19,
+  "thumb": "19.jpg",
+  "arm": "base",
+  "file": "g35_s0.png",
+  "id": "g35",
+  "group": "impossible",
+  "caption": "a man wearing headphones at a laptop",
+  "expect_text": false
+ },
+ {
+  "n": 20,
+  "thumb": "20.jpg",
+  "arm": "lora",
+  "file": "g27_s3.png",
+  "id": "g27",
+  "group": "lettering",
+  "caption": "a poster for a circus, with the word CIRQUE in large letters",
+  "expect_text": true
+ },
+ {
+  "n": 21,
+  "thumb": "21.jpg",
+  "arm": "lora",
+  "file": "g29_s0.png",
+  "id": "g29",
+  "group": "lettering",
+  "caption": "a theatre poster with the word OPERA in large letters",
+  "expect_text": true
+ },
+ {
+  "n": 22,
+  "thumb": "22.jpg",
+  "arm": "ft",
+  "file": "g11_s2.png",
+  "id": "g11",
+  "group": "animals",
+  "caption": "a white horse pulling a carriage",
+  "expect_text": false
+ },
+ {
+  "n": 23,
+  "thumb": "23.jpg",
+  "arm": "lora",
+  "file": "g06_s3.png",
+  "id": "g06",
+  "group": "people",
+  "caption": "two people dancing a waltz in a ballroom",
+  "expect_text": false
+ },
+ {
+  "n": 24,
+  "thumb": "24.jpg",
+  "arm": "ft",
+  "file": "g28_s0.png",
+  "id": "g28",
+  "group": "lettering",
+  "caption": "a poster advertising chocolate, with the word CHOCOLAT at the top",
+  "expect_text": true
+ },
+ {
+  "n": 25,
+  "thumb": "25.jpg",
+  "arm": "base",
+  "file": "g09_s3.png",
+  "id": "g09",
+  "group": "animals",
+  "caption": "a black cat sitting upright, facing the viewer",
+  "expect_text": false
+ },
+ {
+  "n": 26,
+  "thumb": "26.jpg",
+  "arm": "base",
+  "file": "g17_s0.png",
+  "id": "g17",
+  "group": "objects",
+  "caption": "a steam locomotive at a station platform",
+  "expect_text": false
+ },
+ {
+  "n": 27,
+  "thumb": "27.jpg",
+  "arm": "ft",
+  "file": "g30_s1.png",
+  "id": "g30",
+  "group": "lettering",
+  "caption": "a poster for a bicycle race with the word VELO on a banner",
+  "expect_text": true
+ },
+ {
+  "n": 28,
+  "thumb": "28.jpg",
+  "arm": "lora",
+  "file": "g26_s1.png",
+  "id": "g26",
+  "group": "places",
+  "caption": "a vineyard on a hillside in autumn",
+  "expect_text": false
+ },
+ {
+  "n": 29,
+  "thumb": "29.jpg",
+  "arm": "lora",
+  "file": "g15_s3.png",
+  "id": "g15",
+  "group": "objects",
+  "caption": "a bottle of champagne with two glasses",
+  "expect_text": false
+ },
+ {
+  "n": 30,
+  "thumb": "30.jpg",
+  "arm": "ft",
+  "file": "g04_s3.png",
+  "id": "g04",
+  "group": "people",
+  "caption": "a child holding a red balloon",
+  "expect_text": false
+ },
+ {
+  "n": 31,
+  "thumb": "31.jpg",
+  "arm": "ft",
+  "file": "g23_s1.png",
+  "id": "g23",
+  "group": "places",
+  "caption": "a snowy mountain village with a church",
+  "expect_text": false
+ },
+ {
+  "n": 32,
+  "thumb": "32.jpg",
+  "arm": "base",
+  "file": "g14_s3.png",
+  "id": "g14",
+  "group": "animals",
+  "caption": "a dog sitting beside a gramophone",
+  "expect_text": false
+ },
+ {
+  "n": 33,
+  "thumb": "33.jpg",
+  "arm": "ft",
+  "file": "g12_s1.png",
+  "id": "g12",
+  "group": "animals",
+  "caption": "a rooster crowing at sunrise",
+  "expect_text": false
+ },
+ {
+  "n": 34,
+  "thumb": "34.jpg",
+  "arm": "ft",
+  "file": "g20_s2.png",
+  "id": "g20",
+  "group": "objects",
+  "caption": "an open umbrella in the rain",
+  "expect_text": false
+ },
+ {
+  "n": 35,
+  "thumb": "35.jpg",
+  "arm": "lora",
+  "file": "g38_s2.png",
+  "id": "g38",
+  "group": "impossible",
+  "caption": "an electric guitar on a stand",
+  "expect_text": false
+ },
+ {
+  "n": 36,
+  "thumb": "36.jpg",
+  "arm": "ft",
+  "file": "g21_s3.png",
+  "id": "g21",
+  "group": "places",
+  "caption": "the Eiffel Tower at night with fireworks",
+  "expect_text": false
+ },
+ {
+  "n": 37,
+  "thumb": "37.jpg",
+  "arm": "ft",
+  "file": "g08_s3.png",
+  "id": "g08",
+  "group": "people",
+  "caption": "a sailor on the deck of a ship looking out to sea",
+  "expect_text": false
+ },
+ {
+  "n": 38,
+  "thumb": "38.jpg",
+  "arm": "base",
+  "file": "g33_s1.png",
+  "id": "g33",
+  "group": "impossible",
+  "caption": "a woman looking at a smartphone",
+  "expect_text": false
+ },
+ {
+  "n": 39,
+  "thumb": "39.jpg",
+  "arm": "ft",
+  "file": "g40_s1.png",
+  "id": "g40",
+  "group": "impossible",
+  "caption": "a skateboarder in mid-air",
+  "expect_text": false
+ }
+]
