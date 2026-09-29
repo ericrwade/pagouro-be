@@ -21,7 +21,7 @@ BUILD = os.path.abspath(os.path.join(BE, "..", "PAGOURO_BUILD"))
 DATA = os.path.join(BUILD, "data", "images")
 
 BAT = r"""@echo off
-REM Pagouro BE — draws a Belle Époque poster from a sentence, on your CPU, offline.
+REM Pagouro BE - draws a Belle Epoque poster from a sentence, on your CPU, offline.
 REM   PAGOURO-BE "a woman in a long dress holding a parasol"
 REM   PAGOURO-BE "a black cat" 20 1234      (steps, seed; defaults 20 and random)
 setlocal
