@@ -14,19 +14,24 @@ set -euo pipefail
 cd /workspace/be
 STEPS_FT=${STEPS_FT:-8000}
 SEEDS=${SEEDS:-4}
+START=${START:-/workspace/be/r1/pagouro-be-r1-fp16.safetensors}
+OUTNAME=${OUTNAME:-pagouro-be-r2-fp16}
+DONE=${DONE:-BE_ROUND2_DONE}
+LR=${LR:-8e-6}
 echo "### setup $(date -u +%FT%TZ)"
 python -m pip install -q --break-system-packages "diffusers==0.31.0" "transformers==4.46.3" "accelerate==1.1.1" "peft==0.13.2" "datasets==3.1.0" safetensors pillow omegaconf 2>&1 | tail -1
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 echo "### start point: round-1 single file -> diffusers layout (fp32 for training)"
-[ -d base/unet ] || python - <<'EOF'
+[ -d base/unet ] || START=$START python - <<'EOF'
 from diffusers import StableDiffusionPipeline
 import torch
 # the SD2 config repos on the Hub are gated (401) and the single file's text encoder does not map back through
 # diffusers' loader; only the UNet changed in round 1, so: base pipeline from CommonCanvas (config, text encoder,
 # VAE) + the round-1 UNet weights read out of the single file.
+import os
 from diffusers import UNet2DConditionModel
 pipe = StableDiffusionPipeline.from_pretrained("common-canvas/CommonCanvas-S-C", torch_dtype=torch.float32, safety_checker=None)
-pipe.unet = UNet2DConditionModel.from_single_file("/workspace/be/r1/pagouro-be-r1-fp16.safetensors", config="common-canvas/CommonCanvas-S-C", subfolder="unet", torch_dtype=torch.float32)
+pipe.unet = UNet2DConditionModel.from_single_file(os.environ["START"], config="common-canvas/CommonCanvas-S-C", subfolder="unet", torch_dtype=torch.float32)
 pipe.save_pretrained("/workspace/be/base")
 print("start point saved; prediction", pipe.scheduler.config.get("prediction_type"))
 EOF
@@ -38,7 +43,7 @@ accelerate launch --mixed_precision=bf16 train_text_to_image.py \
   --pretrained_model_name_or_path=/workspace/be/base \
   --train_data_dir=train/512 --caption_column=text --image_column=image \
   --resolution=512 --random_flip --train_batch_size=16 --gradient_accumulation_steps=1 --gradient_checkpointing \
-  --max_train_steps=$STEPS_FT --learning_rate=8e-6 --lr_scheduler=cosine --lr_warmup_steps=200 \
+  --max_train_steps=$STEPS_FT --learning_rate=$LR --lr_scheduler=cosine --lr_warmup_steps=200 \
   --use_ema --snr_gamma=5.0 --noise_offset=0.05 --seed=75 --checkpointing_steps=2000 --checkpoints_total_limit=1 \
   --dataloader_num_workers=8 --output_dir=/workspace/be/out/ft 2>&1 | grep -vE "^\s*$" | tee out/train_ft.log | tail -5
 echo "### gate: ft plain + ft with lettering negative $(date -u +%FT%TZ)"
@@ -79,7 +84,7 @@ p.unet = UNet2DConditionModel.from_pretrained("/workspace/be/out/ft", subfolder=
 p.save_pretrained("/workspace/be/out/ft_pipe"); print("ft_pipe saved")
 EOF
 mkdir -p out/ft_single
-python convert_diffusers_to_original_stable_diffusion.py --model_path /workspace/be/out/ft_pipe --checkpoint_path /workspace/be/out/ft_single/pagouro-be-r2-fp16.safetensors --half --use_safetensors
+python convert_diffusers_to_original_stable_diffusion.py --model_path /workspace/be/out/ft_pipe --checkpoint_path /workspace/be/out/ft_single/$OUTNAME.safetensors --half --use_safetensors
 ls -l out/ft_single
 python - <<'EOF'
 from PIL import Image
@@ -96,4 +101,4 @@ print("sheets ok")
 EOF
 rm -rf out/ft_pipe out/ft/checkpoint-*
 cd out && find . -type f ! -name SHA256SUMS -print0 | xargs -0 sha256sum > SHA256SUMS && du -sh . && cd ..
-echo "BE_ROUND2_DONE $(date -u +%FT%TZ)"
+echo "$DONE $(date -u +%FT%TZ)"
