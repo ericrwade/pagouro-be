@@ -84,7 +84,8 @@ def main():
         rid = r.get("id") or (f"met_{r['objectID']}" if "objectID" in r else r["item_url"].rstrip("/").rsplit("/", 1)[-1])
         if rid in done:
             continue
-        cands = [os.path.join(folder, r["file"]), os.path.join(folder, "..", "..", r["file"]), r["file"]]
+        cands = [os.path.join(folder, r["file"]), os.path.join(folder, "..", "..", r["file"]),
+                 os.path.join(folder, "..", "..", "..", r["file"]), os.path.join(folder, os.path.basename(r["file"])), r["file"]]
         p = next((c for c in cands if os.path.exists(c)), None)
         if p:
             todo.append((rid, p))

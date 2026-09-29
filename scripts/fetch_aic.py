@@ -53,7 +53,8 @@ def jpeg_size(b: bytes):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--query", default="poster")
+    ap.add_argument("--query", default="poster", help="multi_match text over title/classification/medium/terms/subjects")
+    ap.add_argument("--medium", default="", help="instead: match_phrase on medium_display (e.g. lithograph)")
     ap.add_argument("--cap", type=int, default=3000)
     ap.add_argument("--max-year", type=int, default=1928)
     ap.add_argument("--min-year", type=int, default=1860)
@@ -72,7 +73,8 @@ def main():
             {"term": {"is_public_domain": True}},
             {"exists": {"field": "image_id"}},
             {"range": {"date_start": {"gte": a.min_year, "lte": a.max_year}}},
-            {"multi_match": {"query": a.query, "fields": ["title", "classification_titles", "medium_display", "term_titles", "subject_titles"]}},
+            ({"match_phrase": {"medium_display": a.medium}} if a.medium else
+             {"multi_match": {"query": a.query, "fields": ["title", "classification_titles", "medium_display", "term_titles", "subject_titles"]}}),
         ]}},
         "fields": FIELDS.split(","),
         "limit": a.limit,
