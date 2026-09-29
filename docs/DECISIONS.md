@@ -59,3 +59,42 @@ and on Eric's N100 laptop.
 **Budget:** the RunPod balance ($127.75 on 2026-09-29, Eric's number) is the ceiling; each pod's
 plan and price go on #2 first; round 1 ≤ $25, further rounds only if the gate numbers say they help.
 The desk miner may run: training is on RunPod, the desk only fetches, captions and packages.
+
+
+### D-99 — Pagouro BE round 1 read: the fine-tune draws the subject, the lettering is glyph salad, the judge is lenient; round 2 plan
+**2026-09-29, from the measured files (`evals/results/round1/`).** Pod `p4jminvdkm9q0a`, A100 SXM 80 GB,
+$1.61 read from the billing API, 1 h 37 min create-to-delete. Corpus 2,809 licensed images → 3,969 crops
+(`docs/CORPUS.md`). Arms: full UNet fine-tune 5,000 steps bs16 bf16 (64 min); LoRA r64 2,000 steps
+(10 min). Gate 40 × 4 seeds × {base, ft, lora}, judge gemini-2.5-flash, arm-blind.
+
+**Numbers.** Judge, subject recognisable: base 125/160 (78 %), **ft 143/160 (89 %)**, lora 141/160 (88 %).
+Style: 94 / 97 / 99 %. Words legible: 0/24, 0/24, 1/24. Human (Eric, 40 blind): subject base 9/12,
+**ft 11/16 (69 %)**, lora 8/12; style 40/40; words 0/6. Judge–human agreement: subject 33/40 (82 %),
+style 38/40 (95 %), words 6/6. Six of seven subject disagreements are judge-yes/human-no, four on
+lettering captions where the judge accepted "a poster with lettering" as the subject.
+
+**Reads.** (1) The fine-tune adds about eleven points of subject-following over the base by the judge;
+by the human the sample is too small to rank ft against lora, and both sit near 70 %. (2) Style is
+saturated for every arm including the untuned base — the prompt prefix alone makes posters — so the
+style question separates nothing and comes off the headline. (3) Lettering is the failure: asked-for
+words never come out legible, and (Eric's note) unasked jumbled lettering appears in most pictures,
+because the corpus is posters and posters have words. The CPU test image (a black cat) grew a title
+and a caption line on its own. (4) The judge is lenient on subject; the human number is the box number
+and the judge's agreement rate is printed beside it (D-50 discipline for pictures). (5) The GGUF q8_0
+path works: stable-diffusion.cpp converts the fp16 SD2 checkpoint in 3 s to a 2.03 GB file and draws a
+correct picture on CPU; timing is unmeasured until the desk miner is paused (641 s with it running).
+
+**Round 2 (≤ $10, same pod class).**
+- Corpus: add the wider LoC walk (1800–1928; at 2,096 of 2,586 seen it had added 100 posters) with
+  content captions for the new rows only.
+- Captions: images whose content caption quotes no lettering get ", no lettering" appended; images with
+  lettering keep the quoted words. Teaches the absence as well as the presence.
+- Training: full fine-tune only (LoRA was the control and matched it), 8,000 steps from the round-1
+  weights (fp16 single file reloaded), same data + the lettering suffix.
+- Decode: gate generated twice for the ft arm — plain, and with a lettering negative prompt
+  ("text, lettering, letters, words, writing, caption") for captions that ask for no words.
+- Gate rubric v2: subject for lettering captions requires the asked word; style dropped from the
+  headline (kept in the file); new item **unasked lettering present** (yes/no) for every picture;
+  human sample 40 again, blind, same page.
+- Box numbers (planned): *subject drawn* (human rate, judge rate, agreement), *unasked lettering*
+  rate, *asked words legible* rate, seconds per image on the desk CPU and on the N100.
