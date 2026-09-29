@@ -17,13 +17,18 @@ def main():
     ap.add_argument("--gate-dir", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--seed", type=int, default=74)
+    ap.add_argument("--mix", default="ft=16,lora=12,base=12", help="arm=count,... summing to 40")
     a = ap.parse_args()
     from PIL import Image
     gate = [json.loads(l) for l in io.open(os.path.join(os.path.dirname(HERE), "evals", "gate40.jsonl"), encoding="utf-8")]
     rng = random.Random(a.seed)
     ids = [g["id"] for g in gate]
     rng.shuffle(ids)
-    arms = ["ft"] * 16 + ["lora"] * 12 + ["base"] * 12
+    arms = []
+    for part in a.mix.split(","):
+        arm, cnt = part.split("=")
+        arms += [arm] * int(cnt)
+    assert len(arms) == 40, "mix must sum to 40"
     rng.shuffle(arms)
     os.makedirs(a.out, exist_ok=True)
     items = []
