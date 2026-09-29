@@ -98,3 +98,36 @@ correct picture on CPU; timing is unmeasured until the desk miner is paused (641
   human sample 40 again, blind, same page.
 - Box numbers (planned): *subject drawn* (human rate, judge rate, agreement), *unasked lettering*
   rate, *asked words legible* rate, seconds per image on the desk CPU and on the N100.
+
+
+### D-100 — Pagouro BE: round 3 is the shipping candidate; f16 ships because q8_0 draws blanks; the box numbers
+**2026-09-29, from the measured files (`evals/results/round{2,3}/`, `docs/facts.json`).** Three rounds on one
+A100 each, $7.72 for the day read from the billing API, every pod deleted (`list-pods` []).
+
+**Round 2** (D-99 plan: ", no lettering" suffix on 538 of 4,120 captions, 8,000 steps from round 1): strict
+subject 76 %, unasked lettering 89 % plain / 81 % with a lettering negative prompt, words 0/24 — the suffix
+was too rare to move the prior, the negative prompt costs subject. **Round 3** (centre crops only — the
+top-square title bands dropped — lettering-free images ×2, 3,270 files, 4,000 steps from round 2): strict
+subject **82 %** (131/160), style 92 %, unasked lettering **85 %** (136/160), asked words legible 2/24; the
+negative prompt no longer helps (85 %) and costs subject (79 %), so the plain decode is the candidate.
+Untuned base on the same strict rubric: 62 %.
+
+**Packaging finding.** stable-diffusion.cpp's q8_0 quantisation of the round-3 checkpoint produces a flat
+brown square on CPU, reproducibly (two conversions, two prompts), while the round-1 q8_0 drew correctly and
+the round-3 fp16 file and its f16 GGUF draw correctly (`evals/results/round3/cpu_cat_*`). Cause not
+diagnosed (weights are healthy: identical tensor set and shapes to round 1, no NaN in the loss); the f16
+GGUF (2,580,023,872 bytes) ships and the fact is recorded on the box. The stick (`release/Pagouro-BE-1.0/`,
+63 files, 2.64 GB) verifies against its manifest; the one-line launcher draws a lighthouse from a cold
+start. Timing on the desk (AMD Ryzen AI MAX+ 395, 16 cores, a miner intermittently active): 107, 95, 197 s
+per 512-px image at 20 steps. The N100 number is Eric's to measure.
+
+**Box numbers (D-50 for pictures):** *subject drawn* — human rate from Eric's 40-image blind score (pending),
+judge rate 82 %, judge–human agreement printed beside it; *unasked lettering* 85 %; *asked words legible*
+2 of 24; seconds per image. The lettering line is stated as a limitation, not hidden: it draws words on most
+pictures and they are not readable.
+
+**Left before public:** Eric's second score → final numbers into README/facts → repackage → Eric signs the
+manifest with the Pagouro key → OpenTimestamps → Hugging Face `Pagouro/pagouro-be-1.0` + GitHub Release on
+`ericrwade/pagouro-be` (repo flips public with it; Arweave only if Eric funds it) → one line on pagouro.com.
+Further training rounds: none unless Eric asks; the remaining lever is a lettering-free-majority corpus
+(masked title bands), ≈ $3 a round.

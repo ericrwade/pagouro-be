@@ -15,7 +15,11 @@
   "our_corpus": {
     "images": 3043,
     "training_files_round3": 3270,
-    "sources": {"loc_artist_posters": 1515, "met_open_access": 533, "art_institute_chicago": 995},
+    "sources": {
+      "loc_artist_posters": 1515,
+      "met_open_access": 533,
+      "art_institute_chicago": 995
+    },
     "date_basis": "every image made before 1929; base model photographs uploaded before 2015",
     "captions": "one content sentence per image, machine-written (google/gemini-2.5-flash-lite, 2026-09-29), labelled in the ledger",
     "ledger": "ledger/ (per-image rows with source, id, title, artist, date, rights as found, sha256)"
@@ -43,11 +47,17 @@
     "engine": "stable-diffusion.cpp (CPU build, commit 3f8527a)",
     "model_file": "model/pagouro-be-1.0-f16.gguf",
     "model_bytes": 2580023872,
-    "seconds_per_image_desk_cpu": null,
+    "seconds_per_image_desk_cpu": "95-197 s per 512-px image at 20 steps (three runs: 107, 95, 197 s) on an AMD Ryzen AI MAX+ 395, 16 cores, with a miner intermittently active; measured 2026-09-29",
     "seconds_per_image_n100": null,
-    "note": "q8_0 quantisation of this checkpoint produced blank images on CPU (evals/round3/); the f16 file ships"
+    "note": "q8_0 quantisation of this checkpoint produced blank images on CPU (evals/round3/); the f16 file ships",
+    "desk_cpu": "AMD Ryzen AI MAX+ 395 (16 cores)"
   },
-  "licenses": {"weights": "CC-BY-SA-4.0", "code": "Apache-2.0", "documents": "CC-BY-SA-4.0", "outputs": "CC0"},
+  "licenses": {
+    "weights": "CC-BY-SA-4.0",
+    "code": "Apache-2.0",
+    "documents": "CC-BY-SA-4.0",
+    "outputs": "CC0"
+  },
   "made_by": "Eric Wade, with Claude (Anthropic)",
   "what_it_is_not": "not a frontier image model; draws lettering on most pictures whether asked or not, and the lettering is not readable; no image input; no text output"
 }

@@ -39,15 +39,15 @@ thing is made and says so where a number is not yet measured.*
 
 ## Status
 
-Build in progress (D-98, 2026-09-29). Round 1 trains on one rented A100; the gate numbers, the
-model file and the packaging follow. Numbers marked TBD are not yet measured.
+Candidate chosen (D-100, 2026-09-29): round 3. Packaged and manifest-verified; signing, timestamp and release follow. Numbers marked TBD are not yet measured.
 
 | Field | Value |
 |---|---|
 | Base | CommonCanvas-S-C, CC-BY-SA-4.0, SD2 architecture, 512 px |
-| Our corpus | TBD images (LoC / Met / AIC), all pre-1929, `docs/CORPUS.md` |
-| Training | TBD steps full UNet fine-tune, 1× A100 80 GB, bf16; LoRA control arm |
-| Gate | 40 captions × 4 seeds; subject / style / lettering, judge + human sample |
-| Runs on | any 64-bit CPU via stable-diffusion.cpp (GGUF q8_0); seconds per image TBD |
+| Our corpus | 3,043 images (LoC 1,515 / Met 533 / AIC 995), all pre-1929, `docs/CORPUS.md` |
+| Training | three rounds, 17,000 steps of full UNet fine-tune in all, 1× A100 80 GB, bf16, $7.72 read from the bill; round 3 ships (centre crops, lettering-free images ×2) |
+| Gate (judge, strict rubric) | subject drawn 131/160 (82 %); untuned base 62 %; unasked lettering 136/160 (85 %); asked words legible 2/24 |
+| Gate (human) | 40-image blind sample: TBD (Eric's second score) |
+| Runs on | any 64-bit Windows CPU via stable-diffusion.cpp, f16 GGUF (2.58 GB; the q8_0 quantisation of this checkpoint draws blanks, so f16 ships); 95–197 s per 512-px image at 20 steps on a 16-core desktop with a miner intermittently active |
 | Licences | model weights CC-BY-SA-4.0 (share-alike inherited from the base); code Apache 2.0; outputs CC0 |
 | Made by | Eric Wade, with Claude (Anthropic) |
