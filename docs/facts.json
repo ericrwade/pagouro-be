@@ -36,12 +36,14 @@
     "seeds_per_caption": 4,
     "judge": "google/gemini-2.5-flash, rubric v2 (strict), arm-blind",
     "subject_drawn_judge": "131/160 (82 %)",
-    "subject_drawn_human": null,
-    "judge_human_agreement_subject": null,
+    "subject_drawn_human": "34/40 (85 %) — Eric, 40 pictures from the shipped model, one per caption, 2026-09-29",
+    "judge_human_agreement_subject": "34/40 (85 %); style 36/40 (90 %); words 6/6",
     "unasked_lettering_judge": "136/160 (85 %)",
     "asked_words_legible_judge": "2/24",
     "untuned_base_subject_judge": "99/160 (62 %)",
-    "files": "evals/round3/"
+    "files": "evals/round3/",
+    "human_style": "36/40 (90 %)",
+    "human_words_legible": "0/6"
   },
   "runtime": {
     "engine": "stable-diffusion.cpp (CPU build, commit 3f8527a)",

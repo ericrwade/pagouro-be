@@ -131,3 +131,5 @@ manifest with the Pagouro key → OpenTimestamps → Hugging Face `Pagouro/pagou
 `ericrwade/pagouro-be` (repo flips public with it; Arweave only if Eric funds it) → one line on pagouro.com.
 Further training rounds: none unless Eric asks; the remaining lever is a lettering-free-majority corpus
 (masked title bands), ≈ $3 a round.
+
+**Human score in (2026-09-29, later):** 40 pictures from the shipped model, one per caption, scored by Eric: subject drawn 34/40 (85 %), style 36/40 (90 %), asked words legible 0/6. Judge–human agreement on subject 34/40 (85 %), style 90 %, words 6/6; the six disagreements split four human-yes/judge-no (lettering captions, where the strict judge wants the word itself) and two the other way. Box: **subject drawn 85 % (person) / 82 % (judge), agreement 85 %; unasked lettering 85 %; asked words legible 0 of 6 (person) / 2 of 24 (judge)**.

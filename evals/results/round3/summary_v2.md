@@ -16,3 +16,15 @@
 | ft_neg | places | 24 | 23/24 (96 %) | 24/24 (100 %) | — | 20/24 (83 %) |
 | ft_neg | lettering | 24 | 2/24 (8 %) | 24/24 (100 %) | 2/24 | 24/24 (100 %) |
 | ft_neg | impossible | 32 | 26/32 (81 %) | 26/32 (81 %) | — | 29/32 (91 %) |
+
+## Human sample (Eric, 2026-09-29, 40 pictures from the round-3 candidate, one seed per caption)
+
+| arm | n | human: subject | human: style | human: words legible |
+|---|---|---|---|---|
+| ft (round 3) | 40 | 34/40 (85 %) | 36/40 (90 %) | 0/6 |
+
+Judge (gemini-2.5-flash, rubric v2) agrees with the human on subject 34/40 (85 %), style 36/40 (90 %),
+words 6/6. Disagreements now go both ways: four human-yes / judge-no, all on lettering captions where the
+strict judge requires the asked word itself and the person accepted the picture (a cafe doorway with a
+sign, a bicycle-race poster with 'VEEO LO'); two judge-yes / human-no (a rocket, the singer's raised hand).
+Code and per-picture rows: `human_sample/human_scores.json`.

@@ -1,0 +1,725 @@
+{
+ "code": "BE3 00YY- 01YY- 02YY- 03YYN 04YY- 05YY- 06YY- 07YY- 08YN- 09YY- 10YY- 11YY- 12YN- 13YY- 14YY- 15YY- 16YY- 17YY- 18NYN 19YY- 20YY- 21YY- 22YY- 23YY- 24YY- 25YY- 26YY- 27NY- 28YY- 29YY- 30YY- 31NY- 32YY- 33NNN 34YY- 35NY- 36YYN 37YYN 38YN- 39NYN",
+ "rows": [
+  {
+   "n": 0,
+   "arm": "ft",
+   "id": "g06",
+   "group": "people",
+   "file": "g06_s0.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts two people dancing in a style reminiscent of a 1900s lithographic poster, with unreadable text at the top and bottom."
+  },
+  {
+   "n": 1,
+   "arm": "ft",
+   "id": "g17",
+   "group": "objects",
+   "file": "g17_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a steam locomotive at a station platform in a lithographic poster style, with some unreadable lettering on the locomotive's front."
+  },
+  {
+   "n": 2,
+   "arm": "ft",
+   "id": "g05",
+   "group": "people",
+   "file": "g05_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a woman on a bicycle, with her hat on, in a lithographic poster style, but there is unasked lettering at the top."
+  },
+  {
+   "n": 3,
+   "arm": "ft",
+   "id": "g32",
+   "group": "lettering",
+   "file": "g32_s1.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": false
+   },
+   "judge": {
+    "subject": false,
+    "style": true,
+    "text": false
+   },
+   "judge_note": "The image shows a doorway with a sign above it, but the sign does not read \"CAFE\" and contains other illegible text."
+  },
+  {
+   "n": 4,
+   "arm": "ft",
+   "id": "g37",
+   "group": "impossible",
+   "file": "g37_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a robot serving a drink at a bar in a lithographic poster style."
+  },
+  {
+   "n": 5,
+   "arm": "ft",
+   "id": "g15",
+   "group": "objects",
+   "file": "g15_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a bottle of champagne and two glasses in a lithographic poster style, but includes unasked-for lettering on the bottle and in the background."
+  },
+  {
+   "n": 6,
+   "arm": "ft",
+   "id": "g02",
+   "group": "people",
+   "file": "g02_s3.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a man with a moustache reading a newspaper at a cafe table, in a style reminiscent of a lithographic poster."
+  },
+  {
+   "n": 7,
+   "arm": "ft",
+   "id": "g18",
+   "group": "objects",
+   "file": "g18_s3.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a hot-air balloon floating above the rooftops of buildings, rendered in a style reminiscent of a lithographic poster."
+  },
+  {
+   "n": 8,
+   "arm": "ft",
+   "id": "g39",
+   "group": "impossible",
+   "file": "g39_s3.png",
+   "human": {
+    "subject": true,
+    "style": false,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a television set on a cabinet in a room with a bookshelf and other furniture, in a style reminiscent of a lithographic poster."
+  },
+  {
+   "n": 9,
+   "arm": "ft",
+   "id": "g04",
+   "group": "people",
+   "file": "g04_s0.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a child-like figure holding a large red object, with another red balloon floating above."
+  },
+  {
+   "n": 10,
+   "arm": "ft",
+   "id": "g21",
+   "group": "places",
+   "file": "g21_s3.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows the Eiffel Tower at night with fireworks in a poster style, but includes unrequested gibberish text at the bottom."
+  },
+  {
+   "n": 11,
+   "arm": "ft",
+   "id": "g08",
+   "group": "people",
+   "file": "g08_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a person in a sailor's uniform on the deck of a ship, looking out at a stormy sea, in a style reminiscent of an early 20th-century poster."
+  },
+  {
+   "n": 12,
+   "arm": "ft",
+   "id": "g34",
+   "group": "impossible",
+   "file": "g34_s2.png",
+   "human": {
+    "subject": true,
+    "style": false,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a jet airliner with its landing gear down, appearing to be in the process of taking off, rendered in a poster-like style with prominent, unreadable text."
+  },
+  {
+   "n": 13,
+   "arm": "ft",
+   "id": "g10",
+   "group": "animals",
+   "file": "g10_s3.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a hermit crab with its body mostly visible, not fully retreated into its shell."
+  },
+  {
+   "n": 14,
+   "arm": "ft",
+   "id": "g19",
+   "group": "objects",
+   "file": "g19_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a bowl of oranges on a table, with additional oranges and some unasked lettering at the top."
+  },
+  {
+   "n": 15,
+   "arm": "ft",
+   "id": "g13",
+   "group": "animals",
+   "file": "g13_s0.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": false,
+    "style": false,
+    "text": null
+   },
+   "judge_note": "The image shows a close-up of black and white feathers, which could belong to any bird, not specifically a peacock with its tail spread."
+  },
+  {
+   "n": 16,
+   "arm": "ft",
+   "id": "g01",
+   "group": "people",
+   "file": "g01_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "A woman in a long dress holds a parasol and walks in a park in a lithographic style."
+  },
+  {
+   "n": 17,
+   "arm": "ft",
+   "id": "g14",
+   "group": "animals",
+   "file": "g14_s3.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a dog sitting next to a gramophone, in a style reminiscent of an old poster."
+  },
+  {
+   "n": 18,
+   "arm": "ft",
+   "id": "g27",
+   "group": "lettering",
+   "file": "g27_s3.png",
+   "human": {
+    "subject": false,
+    "style": true,
+    "text": false
+   },
+   "judge": {
+    "subject": false,
+    "style": true,
+    "text": false
+   },
+   "judge_note": "The image displays large, stylized letters that are not clearly legible as the word 'CIRQUE', but rather appear to spell 'CILUR TREUE &TRI'."
+  },
+  {
+   "n": 19,
+   "arm": "ft",
+   "id": "g24",
+   "group": "places",
+   "file": "g24_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a red and white lighthouse on a dark rocky coast with a blue sky and some clouds, in a lithographic poster style."
+  },
+  {
+   "n": 20,
+   "arm": "ft",
+   "id": "g20",
+   "group": "objects",
+   "file": "g20_s0.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a person under an umbrella in the rain, with large, unreadable text below."
+  },
+  {
+   "n": 21,
+   "arm": "ft",
+   "id": "g12",
+   "group": "animals",
+   "file": "g12_s3.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a rooster against a sunrise, with mountains and grass, in a lithographic poster style, but it includes unasked-for lettering at the bottom."
+  },
+  {
+   "n": 22,
+   "arm": "ft",
+   "id": "g22",
+   "group": "places",
+   "file": "g22_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a seaside promenade with numerous small structures that resemble bathing huts, rendered in a flat, poster-like style."
+  },
+  {
+   "n": 23,
+   "arm": "ft",
+   "id": "g16",
+   "group": "objects",
+   "file": "g16_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a bicycle leaning against a lamp post in a lithographic poster style, with unasked-for lettering at the top right."
+  },
+  {
+   "n": 24,
+   "arm": "ft",
+   "id": "g26",
+   "group": "places",
+   "file": "g26_s3.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a vineyard on rolling hills with autumn colors, framed by a border."
+  },
+  {
+   "n": 25,
+   "arm": "ft",
+   "id": "g09",
+   "group": "animals",
+   "file": "g09_s0.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a black and white cat with green eyes, sitting upright and facing forward, in a style reminiscent of a lithographic poster."
+  },
+  {
+   "n": 26,
+   "arm": "ft",
+   "id": "g25",
+   "group": "places",
+   "file": "g25_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a bridge over a river with buildings in the background, in a lithographic poster style."
+  },
+  {
+   "n": 27,
+   "arm": "ft",
+   "id": "g36",
+   "group": "impossible",
+   "file": "g36_s1.png",
+   "human": {
+    "subject": false,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a rocket-like structure with other smaller rocket-like elements, against a background that could be interpreted as space or sky, with some unreadable text at the bottom."
+  },
+  {
+   "n": 28,
+   "arm": "ft",
+   "id": "g11",
+   "group": "animals",
+   "file": "g11_s0.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a white horse rearing up next to a carriage, with some yellow lines in the background and partial lettering at the top."
+  },
+  {
+   "n": 29,
+   "arm": "ft",
+   "id": "g35",
+   "group": "impossible",
+   "file": "g35_s3.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a man from behind, wearing headphones and looking at a laptop, in a poster style with unasked-for lettering."
+  },
+  {
+   "n": 30,
+   "arm": "ft",
+   "id": "g40",
+   "group": "impossible",
+   "file": "g40_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a person on a skateboard, with one foot on the board and the other holding it, against a dark background with some stars."
+  },
+  {
+   "n": 31,
+   "arm": "ft",
+   "id": "g07",
+   "group": "people",
+   "file": "g07_s1.png",
+   "human": {
+    "subject": false,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image shows a person in a black dress, but the hands are clasped under the chin, not one raised, and there are no long gloves visible."
+  },
+  {
+   "n": 32,
+   "arm": "ft",
+   "id": "g23",
+   "group": "places",
+   "file": "g23_s2.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a snowy mountain village with a prominent building that could be a church, in a lithographic poster style, but includes unasked-for lettering at the bottom."
+  },
+  {
+   "n": 33,
+   "arm": "ft",
+   "id": "g31",
+   "group": "lettering",
+   "file": "g31_s3.png",
+   "human": {
+    "subject": false,
+    "style": false,
+    "text": false
+   },
+   "judge": {
+    "subject": false,
+    "style": true,
+    "text": false
+   },
+   "judge_note": "The image shows a medallion with a crab-like creature at the top, and illegible text within the medallion and around its border."
+  },
+  {
+   "n": 34,
+   "arm": "ft",
+   "id": "g33",
+   "group": "impossible",
+   "file": "g33_s1.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The image depicts a woman looking at a smartphone in a lithographic poster style, with unasked-for lettering above and below the main image."
+  },
+  {
+   "n": 35,
+   "arm": "ft",
+   "id": "g03",
+   "group": "people",
+   "file": "g03_s1.png",
+   "human": {
+    "subject": false,
+    "style": true,
+    "text": null
+   },
+   "judge": {
+    "subject": false,
+    "style": true,
+    "text": null
+   },
+   "judge_note": "The dancer is not kicking a leg high; she is leaning forward with both feet on the ground."
+  },
+  {
+   "n": 36,
+   "arm": "ft",
+   "id": "g30",
+   "group": "lettering",
+   "file": "g30_s1.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": false
+   },
+   "judge": {
+    "subject": false,
+    "style": true,
+    "text": false
+   },
+   "judge_note": "The image shows a poster with the word 'VEEO LO' and other illegible text, along with abstract bicycle-like shapes."
+  },
+  {
+   "n": 37,
+   "arm": "ft",
+   "id": "g28",
+   "group": "lettering",
+   "file": "g28_s0.png",
+   "human": {
+    "subject": true,
+    "style": true,
+    "text": false
+   },
+   "judge": {
+    "subject": false,
+    "style": true,
+    "text": false
+   },
+   "judge_note": "The image shows a poster with a blue background and yellow text, but the word 'CHOCOLAT' is not legible, instead showing 'CHOADL ERTOORALES' and other gibberish."
+  },
+  {
+   "n": 38,
+   "arm": "ft",
+   "id": "g38",
+   "group": "impossible",
+   "file": "g38_s3.png",
+   "human": {
+    "subject": true,
+    "style": false,
+    "text": null
+   },
+   "judge": {
+    "subject": true,
+    "style": false,
+    "text": null
+   },
+   "judge_note": "The image shows an electric guitar on a stand, rendered in a photographic style."
+  },
+  {
+   "n": 39,
+   "arm": "ft",
+   "id": "g29",
+   "group": "lettering",
+   "file": "g29_s3.png",
+   "human": {
+    "subject": false,
+    "style": true,
+    "text": false
+   },
+   "judge": {
+    "subject": false,
+    "style": true,
+    "text": false
+   },
+   "judge_note": "The image shows a poster with large, stylized letters that are not clearly legible as the word 'OPERA', and other illegible text."
+  }
+ ]
+}

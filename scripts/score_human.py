@@ -17,14 +17,19 @@ def main():
     a = ap.parse_args()
     items = {it["n"]: it for it in json.load(open(os.path.join(a.sample, "manifest.json"), encoding="utf-8"))}
     toks = a.code.split()
-    assert toks[0] == "BE1", "code must start with BE1"
+    assert toks[0] in ("BE1", "BE3"), "code must start with BE1 or BE3"
     human = {}
     for t in toks[1:]:
         n = int(t[:2]); s, st, tx = t[2], t[3], t[4]
         human[n] = {"subject": s == "Y", "style": st == "Y", "text": None if tx == "-" else tx == "Y"}
     judge = {}
-    for arm in ("base", "ft", "lora"):
-        for l in io.open(os.path.join(a.gate_dir, f"verdicts_{arm}.jsonl"), encoding="utf-8"):
+    for arm in ("base", "ft", "lora", "ft_neg"):
+        vp = os.path.join(a.gate_dir, f"verdicts_{arm}_v2.jsonl")
+        if not os.path.exists(vp):
+            vp = os.path.join(a.gate_dir, f"verdicts_{arm}.jsonl")
+        if not os.path.exists(vp):
+            continue
+        for l in io.open(vp, encoding="utf-8"):
             r = json.loads(l); judge[(arm, r["file"])] = r
     rows = []
     by_arm = defaultdict(lambda: {"n": 0, "subject": 0, "style": 0, "text_n": 0, "text": 0})
@@ -42,7 +47,7 @@ def main():
     json.dump({"code": a.code, "rows": rows}, open(os.path.join(a.sample, "human_scores.json"), "w", encoding="utf-8"), indent=1)
     print("| arm | n | human: subject | human: style | human: words legible |")
     print("|---|---|---|---|---|")
-    for arm in ("base", "ft", "lora"):
+    for arm in [k for k in ("base", "ft", "lora", "ft_neg") if by_arm.get(k)]:
         x = by_arm[arm]
         t = f"{x['text']}/{x['text_n']}" if x["text_n"] else "—"
         print(f"| {arm} | {x['n']} | {x['subject']}/{x['n']} ({100*x['subject']/x['n']:.0f} %) | {x['style']}/{x['n']} ({100*x['style']/x['n']:.0f} %) | {t} |")

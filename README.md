@@ -39,7 +39,7 @@ thing is made and says so where a number is not yet measured.*
 
 ## Status
 
-Candidate chosen (D-100, 2026-09-29): round 3. Packaged and manifest-verified; signing, timestamp and release follow. Numbers marked TBD are not yet measured.
+Candidate chosen (D-100, 2026-09-29): round 3. Packaged and manifest-verified; signing, timestamp and release follow. The N100 timing is the one number still to measure.
 
 | Field | Value |
 |---|---|
@@ -47,7 +47,7 @@ Candidate chosen (D-100, 2026-09-29): round 3. Packaged and manifest-verified; s
 | Our corpus | 3,043 images (LoC 1,515 / Met 533 / AIC 995), all pre-1929, `docs/CORPUS.md` |
 | Training | three rounds, 17,000 steps of full UNet fine-tune in all, 1× A100 80 GB, bf16, $7.72 read from the bill; round 3 ships (centre crops, lettering-free images ×2) |
 | Gate (judge, strict rubric) | subject drawn 131/160 (82 %); untuned base 62 %; unasked lettering 136/160 (85 %); asked words legible 2/24 |
-| Gate (human) | 40-image blind sample: TBD (Eric's second score) |
+| Gate (human) | 40 pictures from the shipped model, one per caption, scored by a person: subject drawn 34/40 (85 %), poster style 36/40 (90 %), asked words legible 0/6; the judge agrees with the person on subject 34/40 (85 %) |
 | Runs on | any 64-bit Windows CPU via stable-diffusion.cpp, f16 GGUF (2.58 GB; the q8_0 quantisation of this checkpoint draws blanks, so f16 ships); 95–197 s per 512-px image at 20 steps on a 16-core desktop with a miner intermittently active |
 | Licences | model weights CC-BY-SA-4.0 (share-alike inherited from the base); code Apache 2.0; outputs CC0 |
 | Made by | Eric Wade, with Claude (Anthropic) |
