@@ -48,7 +48,7 @@ takes no image input and writes no text.
 |---|---|
 | `pagouro-be-1.0-f16.gguf` | the model for stable-diffusion.cpp (f16; the q8_0 quantisation of this checkpoint draws blank images on CPU, so f16 ships) |
 | `pagouro-be-1.0-fp16.safetensors` | the same weights, single-file SD2 layout, for diffusers / other loaders |
-| `MANIFEST.md`, `.minisig`, `.ots`, `pagouro.pub` | the stick manifest (67 files), its minisign signature (key `RWQe8tvI…`, the Pagouro key), its OpenTimestamps proof |
+| `MANIFEST.md`, `.minisig`, `.ots`, `pagouro.pub` | the stick manifest (67 files), its minisign signature (key `RWQe8tvI…`, the Pagouro key), its OpenTimestamps proof (Bitcoin block 969239) |
 | `ledger/` | the training-set ledger and every source ledger with captions |
 | `evals/` | the gate, verdicts, judge summaries, the human samples |
 | `CORPUS.md`, `facts.json` | sources, counts, licences; key facts in one JSON |

@@ -67,5 +67,7 @@
     "outputs": "CC0"
   },
   "made_by": "Eric Wade, with Claude (Anthropic)",
-  "what_it_is_not": "not a frontier image model; draws lettering on most pictures whether asked or not, and the lettering is not readable; no image input; no text output"
+  "what_it_is_not": "not a frontier image model; draws lettering on most pictures whether asked or not, and the lettering is not readable; no image input; no text output",
+  "timestamp_block": 969239,
+  "timestamp": "OpenTimestamps proof MANIFEST.md.ots: Bitcoin block 969239 (earliest attestation; also 969240, 969244, 969251), upgraded 2026-09-30"
 }
