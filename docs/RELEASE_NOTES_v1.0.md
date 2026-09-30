@@ -23,10 +23,20 @@ The untuned base draws the subject 62 % of the time under the same rubric. **Wha
 lettering to most pictures whether asked or not, and the lettering is not readable. About 100–200 seconds
 per picture on a 16-core desktop CPU.
 
-## What is in the zip
+## Download
 
-`Pagouro-BE-1.0-win64.zip` — SHA-256 `f6a059dd4908a29811ac16bd9dc22f89527105b0301965c58d315a9c785d15fc`,
-2,609,894,682 bytes, built with forward-slash paths. Unzip, then in the folder:
+GitHub caps a release file at 2 GiB and the model alone is 2.58 GB, so this page carries the stick in pieces.
+Two ways to get the whole thing:
+
+1. **From this page:** `Pagouro-BE-1.0-win64-kit.zip` (30 MB: runtime, documents, ledgers, evals, manifest,
+   signature), plus `pagouro-be-1.0-f16.gguf.part1` and `.part2`, plus `JOIN-MODEL.bat`. Unzip the kit, put
+   the two parts and `JOIN-MODEL.bat` inside the `Pagouro-BE` folder, double-click `JOIN-MODEL.bat`: it writes
+   `model\pagouro-be-1.0-f16.gguf`, checks its SHA-256
+   (`b3a394fc544ca066b83db7f4ae46e77360ccc0e3d454c1d92baa7704e4674708`) and deletes the parts on a match.
+2. **One zip:** `Pagouro-BE-1.0-win64.zip` — SHA-256 `f6a059dd4908a29811ac16bd9dc22f89527105b0301965c58d315a9c785d15fc`,
+   2,609,894,682 bytes — from https://huggingface.co/Pagouro/pagouro-be-1.0 (and Arweave, if funded).
+
+Either way `VERIFY.bat` must then say *every listed file matches the manifest*. Then, in the folder:
 
 ```
 PAGOURO-BE "a lighthouse on a rocky coast at dusk"
