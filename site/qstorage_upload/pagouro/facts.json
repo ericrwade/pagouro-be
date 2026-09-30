@@ -1,0 +1,93 @@
+{
+  "_about": "Pagouro key facts (O-43). Hand-maintained source; scripts/package_release.py copies it to the stick as facts.json and adds the 'release' block it can measure (model files, bytes, sha256, packaging date). A value of null means: not yet measured -- filled at release from the file named in '_sources'. Every number here must trace to a file in the repository (D-50).",
+  "name": "Pagouro",
+  "type": "Offline language model and application on a USB stick",
+  "modality": "text only: no image, audio or video input or output; no camera, microphone, file browser or web access",
+  "parameters": 968968192,
+  "architecture": {
+    "kind": "decoder-only transformer",
+    "layers": 20,
+    "dim": 2048,
+    "heads": 16,
+    "kv_heads": 4,
+    "ffn": 5632,
+    "context_tokens": 8192,
+    "vocab": 32768
+  },
+  "training": {
+    "tokens": 99724809408,
+    "mixture": {
+      "fineweb_edu": 0.916,
+      "stack_exchange": 0.077,
+      "dated_code_x3": 0.007
+    },
+    "anneal": "licensed shelf + canon, 12,325,693 tokens (data/tokenized_anneal_1b)",
+    "date_basis": "every row written or collected before 2022-01-01; basis stated per row in corpus.json",
+    "hardware": "8x NVIDIA H100 SXM (RunPod secure cloud, CA-MTL-1), pod g3qf86spkqfq1j",
+    "started_utc": "2026-09-22T08:48Z",
+    "finished_utc": "2026-09-24T22:52Z",
+    "bill_usd": 1817.0,
+    "decision": "D-85",
+    "card_hours": 61.6,
+    "post_training": "SFT B (7,929 examples) → GRPO-1 (D-71 curriculum) averaged 30/70 with SFT B (soup70) → GRPO-3: 50 steps on the self-knowledge curriculum (labelled by the model's own 8-sample hit rate, O-45 #1)"
+  },
+  "licences": {
+    "weights": "CC-BY-SA-4.0",
+    "code": "Apache-2.0",
+    "book_story_chapters": "all rights reserved",
+    "book_do_it_chapters": "CC-BY-SA-4.0",
+    "decision": "D-31, D-64"
+  },
+  "honesty": {
+    "bluff_rate_unanswerable_100": 0.13,
+    "answered_real_rate_100": 0.82,
+    "suite": "evals/ (D-73 100-item sets, frozen before the model existed)",
+    "note": "never 'does not hallucinate' (D-50)",
+    "candidate": "pagouro-1b-soup-g3-cp-4 (D-96): 60 % GRPO-3 + 40 % GRPO-C′ (GRPO-3 trained on its own failures across the four unanswerable categories); measured at q8_0 at the shipped decode (greedy, no repetition penalty, payload cap 2x350, loop trim)",
+    "q4_k_m_file_note": "The q4_k_m file beside the shipped q8_0 measures bluff 0.16 / answered-real 0.78 on the same sets (evals/results/pagouro-1b-soup-g3-cp-4-q4__*); it is below the answered-real gate and is shipped as the smaller alternative, not as the measured model. The app runs q8_0."
+  },
+  "requirements": "any 64-bit Windows/Linux/macOS machine; runs on CPU; no internet, no account",
+  "price_usd": 0,
+  "maintenance": "none -- frozen at release; verify a copy with CHECK_YOUR_COPY.md",
+  "telemetry": "none -- see THREAT_MODEL.md for what 'private' does and does not cover",
+  "watermark": "none; the project claims no rights in outputs (D-83)",
+  "relatives": [
+    "OLMo (AI2)",
+    "Common Pile / Comma (EleutherAI)"
+  ],
+  "made_by": "Eric Wade, with Claude (Anthropic)",
+  "release": null,
+  "_sources": {
+    "parameters": "scripts/train.py parameter count printed at launch (D-85)",
+    "training.tokens": "the volume build's meta.json (plans/volume_1b.json); D-85",
+    "training.bill_usd": "RunPod billing API: $1,778.97 for the pretraining job (read 2026-09-25 00:05Z) + ~$11 GRPO pod + the big pod's last hour posted late; ≈ $1,817 all-in, to be re-read when settled",
+    "honesty.*": "evals/results/pagouro-1b-soup-g3-cp-4-trim2__bluff100.json and __calibration100.json (suite 1, frozen 2026-09-20), q8_0, greedy, TRIM_REPETITION=1 with the 2026-09-26 trim (a phrase said three times is cut)",
+    "release": "written by scripts/package_release.py from the files it hashes",
+    "decode": "app/pagouro_app.py (DECODE_TEMPERATURE, DECODE_REPEAT_PENALTY, trim_repetition, tool_pack_search cap); evals/run_eval.py (DECODE_TEMP, TRIM_REPETITION)"
+  },
+  "files_candidate": {
+    "q8_0": {
+      "path": "data/gguf_1b/pagouro-1b-soup-g3-cp-4-q8_0.gguf",
+      "bytes": 1102230720,
+      "sha256": "9336cce0647dc5a0a7346163fa45d97ec18fd9a73cb3048ebd810643f7585c05"
+    },
+    "q4_k_m": {
+      "path": "data/gguf_1b/pagouro-1b-soup-g3-cp-4-q4_k_m.gguf",
+      "bytes": 633976000,
+      "sha256": "e1c1778674c13d4b070254a8afa69ef7196f7617929b52808d1c0ed7cc33f64b"
+    },
+    "checkpoint": {
+      "path": "data/out_1b/research4/pagouro-1b-soup-g3-cp-4.pt"
+    }
+  },
+  "decode": {
+    "engine": "llama.cpp (llama-server, CPU, -ngl 0)",
+    "context_tokens": 8192,
+    "temperature_answers": 0.0,
+    "repeat_penalty": 1.0,
+    "pack_payload_to_model": "2 hits x 350 chars",
+    "loop_trim": "answer cut at the first repeated sentence, with a visible note",
+    "careful_mode_reasks_temperature": 0.7,
+    "note": "D-93: the honesty numbers are measured at exactly this decode (greedy, trim on). Sampling at 0.3 measured bluff 37 / answered 76 on the same model; a repetition penalty of 1.25 measured 17 / 82 single-turn but rambled and confabulated in conversation."
+  }
+}

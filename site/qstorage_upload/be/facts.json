@@ -1,0 +1,71 @@
+{
+  "_about": "Pagouro BE key facts. Every number traces to a file in this folder (evals/, ledger/, CORPUS.md). null = not yet measured.",
+  "name": "Pagouro BE",
+  "version": "1.0",
+  "type": "Offline text-to-image model in the Paris lithographic poster style of 1890-1910, on a USB stick",
+  "sibling_of": "Pagouro 1.0 (https://github.com/ericrwade/pagouro)",
+  "base_model": {
+    "name": "CommonCanvas-S-C",
+    "url": "https://huggingface.co/common-canvas/CommonCanvas-S-C",
+    "architecture": "Stable Diffusion 2 (UNet 865.9M params, OpenCLIP text encoder 340.4M), 512 px, epsilon prediction",
+    "license": "CC-BY-SA-4.0",
+    "training_data": "CommonCatalog: CC-BY and CC-BY-SA images from YFCC100M (Flickr uploads 2004-2014), machine captions (BLIP-2)",
+    "from_scratch": false
+  },
+  "our_corpus": {
+    "images": 3043,
+    "training_files_round3": 3270,
+    "sources": {
+      "loc_artist_posters": 1515,
+      "met_open_access": 533,
+      "art_institute_chicago": 995
+    },
+    "date_basis": "every image made before 1929; base model photographs uploaded before 2015",
+    "captions": "one content sentence per image, machine-written (google/gemini-2.5-flash-lite, 2026-09-29), labelled in the ledger",
+    "ledger": "ledger/ (per-image rows with source, id, title, artist, date, rights as found, sha256)"
+  },
+  "training": {
+    "rounds": 3,
+    "steps_total": 17000,
+    "hardware": "1x NVIDIA A100 SXM 80 GB, rented (RunPod), 2026-09-29",
+    "cost_usd_read_from_billing": 7.72,
+    "shipped": "round 3 (centre crops only, lettering-free images x2, 4,000 steps from round 2)"
+  },
+  "gate": {
+    "captions": 40,
+    "seeds_per_caption": 4,
+    "judge": "google/gemini-2.5-flash, rubric v2 (strict), arm-blind",
+    "subject_drawn_judge": "131/160 (82 %)",
+    "subject_drawn_human": "34/40 (85 %) — Eric, 40 pictures from the shipped model, one per caption, 2026-09-29",
+    "judge_human_agreement_subject": "34/40 (85 %); style 36/40 (90 %); words 6/6",
+    "unasked_lettering_judge": "136/160 (85 %)",
+    "asked_words_legible_judge": "2/24",
+    "untuned_base_subject_judge": "99/160 (62 %)",
+    "files": "evals/round3/",
+    "human_style": "36/40 (90 %)",
+    "human_words_legible": "0/6"
+  },
+  "runtime": {
+    "engine": "stable-diffusion.cpp (CPU build, commit 3f8527a)",
+    "model_file": "model/pagouro-be-1.0-f16.gguf",
+    "model_bytes": 2580023872,
+    "seconds_per_image_desk_cpu": "95 s per 512-px image at 20 steps, run from the USB stick with the machine otherwise idle (AMD Ryzen AI MAX+ 395, 16 cores, 2026-09-29); 95-197 s with a miner active on the same machine",
+    "seconds_per_image_n100": null,
+    "note": "q8_0 quantisation of this checkpoint produced blank images on CPU (evals/round3/); the f16 file ships",
+    "desk_cpu": "AMD Ryzen AI MAX+ 395 (16 cores)",
+    "seconds_per_image_desk_cpu_runs": [
+      107,
+      95,
+      197,
+      95
+    ]
+  },
+  "licenses": {
+    "weights": "CC-BY-SA-4.0",
+    "code": "Apache-2.0",
+    "documents": "CC-BY-SA-4.0",
+    "outputs": "CC0"
+  },
+  "made_by": "Eric Wade, with Claude (Anthropic)",
+  "what_it_is_not": "not a frontier image model; draws lettering on most pictures whether asked or not, and the lettering is not readable; no image input; no text output"
+}
