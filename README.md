@@ -38,7 +38,7 @@ hash-anchored, mirrored. Public since 2026-09-29.*
 
 ## Status
 
-**Released 2026-09-29, version 1.0, frozen.** Download: https://github.com/ericrwade/pagouro-be/releases/tag/v1.0 (kit + model parts; the one-zip stick, SHA-256 `f6a059dd…`, is on Hugging Face) · weights and ledger: https://huggingface.co/Pagouro/pagouro-be-1.0 · manifest SHA-256 `fcbc785d…`, signed with the Pagouro key, OpenTimestamps proof pending its Bitcoin block. The N100 timing is the one number still to measure.
+**Released 2026-09-29, version 1.0, frozen.** Download: https://github.com/ericrwade/pagouro-be/releases/tag/v1.0 (kit + model parts; the one-zip stick, SHA-256 `f6a059dd…`, is on Hugging Face) · weights and ledger: https://huggingface.co/Pagouro/pagouro-be-1.0 · manifest SHA-256 `fcbc785d…`, signed with the Pagouro key, OpenTimestamps proof pending its Bitcoin block. Mirror with the receipts: https://pagouro.qstorage.quilibrium.com/ . The N100 timing is the one number still to measure.
 
 | Field | Value |
 |---|---|

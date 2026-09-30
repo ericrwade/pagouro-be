@@ -53,6 +53,7 @@ The picture lands in `workspace\art\`. Inside: `sd\` (stable-diffusion.cpp CPU b
   key `RWQe8tvI6RCE2uMbuILC9/rEr6bNZdcOA+WC7dHtObLE94ovGk8xuFlG` (`minisign -Vm MANIFEST.md -p pagouro.pub`).
 - OpenTimestamps proof `MANIFEST_v1.0.md.ots` (Bitcoin block: pending upgrade at release; filled here when it lands).
 - Weights and ledger also at https://huggingface.co/Pagouro/pagouro-be-1.0 (same hashes).
+- Receipts mirrored on Quilibrium QStorage: https://pagouro.qstorage.quilibrium.com/ (be/ holds this manifest, signature, proof and facts).
 
 ## Licences
 
