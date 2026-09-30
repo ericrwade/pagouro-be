@@ -20,8 +20,8 @@ fine-tuning rounds on a rented A100 for $7.72 read from the bill. `CORPUS.md` ha
 | Unasked lettering present | — | 136/160 (85 %) | — |
 
 The untuned base draws the subject 62 % of the time under the same rubric. **What it does badly:** it adds
-lettering to most pictures whether asked or not, and the lettering is not readable. About 100–200 seconds
-per picture on a 16-core desktop CPU.
+lettering to most pictures whether asked or not, and the lettering is not readable. About 95 seconds per picture on an idle 16-core desktop CPU, run from the
+stick; two to three minutes when the machine is busy.
 
 ## Download
 

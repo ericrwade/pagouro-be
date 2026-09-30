@@ -49,10 +49,16 @@
     "engine": "stable-diffusion.cpp (CPU build, commit 3f8527a)",
     "model_file": "model/pagouro-be-1.0-f16.gguf",
     "model_bytes": 2580023872,
-    "seconds_per_image_desk_cpu": "95-197 s per 512-px image at 20 steps (three runs: 107, 95, 197 s) on an AMD Ryzen AI MAX+ 395, 16 cores, with a miner intermittently active; measured 2026-09-29",
+    "seconds_per_image_desk_cpu": "95 s per 512-px image at 20 steps, run from the USB stick with the machine otherwise idle (AMD Ryzen AI MAX+ 395, 16 cores, 2026-09-29); 95-197 s with a miner active on the same machine",
     "seconds_per_image_n100": null,
     "note": "q8_0 quantisation of this checkpoint produced blank images on CPU (evals/round3/); the f16 file ships",
-    "desk_cpu": "AMD Ryzen AI MAX+ 395 (16 cores)"
+    "desk_cpu": "AMD Ryzen AI MAX+ 395 (16 cores)",
+    "seconds_per_image_desk_cpu_runs": [
+      107,
+      95,
+      197,
+      95
+    ]
   },
   "licenses": {
     "weights": "CC-BY-SA-4.0",
