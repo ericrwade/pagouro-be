@@ -48,6 +48,12 @@ through OpenRouter on 2026-09-29 (2,808 of 2,809 images; one Met row fell back t
 ledger labels every such caption `caption_source: "machine (google/gemini-2.5-flash-lite, 2026-09-29)"`.
 Cost: 2,809 calls, ≈ 3.8 M prompt tokens, ≈ 60 k completion tokens, about $0.45.
 
+**Terms note (added 2026-10-01 after an outside review).** The content captions are outputs of a commercial API
+(Gemini 2.5 Flash-Lite via OpenRouter). Google's Gemini API terms restrict using outputs to develop models that
+compete with Google; our reading is that this poster fine-tune is not one, but the captions are the single training
+input without a public licence, and the ledger says so per row (`caption_source`). A future version can replace them
+with captions from an open-weights vision model (e.g. Qwen2.5-VL, Apache 2.0) and retrain.
+
 ## What is not in it
 
 No web-scraped images, no images without a rights statement, nothing dated after 1928 in our part,

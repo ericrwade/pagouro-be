@@ -23,7 +23,12 @@ on a frozen test that ships with it; released once, signed, timestamped.
 (Stable Diffusion 2 architecture, CC-BY-SA-4.0, trained by its authors only on Creative Commons photographs
 with machine-written captions). Our part is the corpus and the fine-tune on top: 3,043 public-domain posters
 and prints (Library of Congress *Artist Posters*, The Met Open Access, Art Institute of Chicago), each with
-its own ledger row and a one-sentence content caption written by a vision model and labelled as such.
+its own ledger row and a one-sentence content caption written by a vision model (Google Gemini 2.5 Flash-Lite,
+through OpenRouter, 2026-09-29) and labelled as such in the ledger. Those captions are the one training input not
+under a public licence: they are API outputs, and Google's Gemini API terms restrict using outputs to develop
+models that compete with Google. Our reading is that a poster-style fine-tune of a Creative-Commons diffusion
+model is not such a model; the reader can judge, and a future version can re-caption with an open-weights
+vision model and retrain. The images themselves are public domain.
 Everything in our part was made before 1929; the base's photographs were uploaded before 2015.
 
 ## What it draws
