@@ -38,8 +38,12 @@ def main():
     import boto3
     from botocore.config import Config
     ak, sk = creds()
+    # boto3 >= 1.36 adds a CRC32 checksum trailer to every PutObject; QStorage answers AccessDenied to it
+    # (not a permissions problem). Multipart, copy and tagging worked all along; this switches the trailer off.
     s3 = boto3.client("s3", endpoint_url=ENDPOINT, aws_access_key_id=ak, aws_secret_access_key=sk,
-                      region_name="us-east-1", config=Config(s3={"addressing_style": "path"}, retries={"max_attempts": 4}))
+                      region_name="q-world-1", config=Config(s3={"addressing_style": "path"}, retries={"max_attempts": 4},
+                                                             request_checksum_calculation="when_required",
+                                                             response_checksum_validation="when_required"))
     names = [b["Name"] for b in s3.list_buckets().get("Buckets", [])]
     print("buckets:", names)
     if a.bucket not in names:
