@@ -29,7 +29,9 @@ under a public licence: they are API outputs, and Google's Gemini API terms rest
 models that compete with Google. Our reading is that a poster-style fine-tune of a Creative-Commons diffusion
 model is not such a model; the reader can judge, and a future version can re-caption with an open-weights
 vision model and retrain. The images themselves are public domain.
-Everything in our part was made before 1929; the base's photographs were uploaded before 2015.
+Everything in our part was made before 1929; the base's photographs were uploaded before 2015. Two inherited
+components are not covered by either ledger: the OpenCLIP text encoder (trained on LAION captions, per the
+CommonCanvas paper) and the Stable Diffusion 2 VAE. Our fine-tune changed the UNet only.
 
 ## What it draws
 
@@ -60,7 +62,7 @@ takes no image input and writes no text.
 | `pagouro-be-1.0-f16.gguf` | the model for stable-diffusion.cpp (f16; the q8_0 quantisation of this checkpoint draws blank images on CPU, so f16 ships) |
 | `pagouro-be-1.0-fp16.safetensors` | the same weights, single-file SD2 layout, for diffusers / other loaders |
 | `MANIFEST.md`, `.minisig`, `.ots`, `pagouro.pub` | the stick manifest (67 files), its minisign signature (key `RWQe8tvI…`, the Pagouro key), its OpenTimestamps proof (Bitcoin block 969239) |
-| `ledger/` | the training-set ledger and every source ledger with captions |
+| `ledger/` | every source ledger with captions; `ledger/training_set_r3.jsonl` is the final selection-and-crop ledger (3,270 rows), added 2026-10-01 after an outside review found it missing from the signed kit |
 | `evals/` | the gate, verdicts, judge summaries, the human samples |
 | `CORPUS.md`, `facts.json` | sources, counts, licences; key facts in one JSON |
 

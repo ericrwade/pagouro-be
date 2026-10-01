@@ -15,6 +15,7 @@ assembled caption and the SHA-256 of the 512-px file. Numbers here are read from
 | Weights licence | CC-BY-SA-4.0 (so our fine-tune is CC-BY-SA-4.0 too, with attribution) |
 | Training data | CommonCatalog, the CC-BY + CC-BY-SA subset of YFCC100M (Flickr, uploads 2004–2014); captions machine-written (BLIP-2) by its authors |
 | Paper | arXiv 2310.16825 |
+| Inherited components | CommonCanvas-S-C is not only its UNet: per its paper the text encoder is OpenCLIP (trained on LAION captions, not a CC-only set) and the VAE is Stable Diffusion 2's. Our fine-tune changed the UNet only; the text encoder and VAE ship as inherited, and their training history is not covered by the museum ledger or CommonCanvas's CC image set. |
 | Note | Its model card's own heading reads "CommonCanvas-S-NC" on the S-C repository; the licence file and dataset tags say S-C (commercial subset). Recorded as found. |
 
 ## Our corpus
