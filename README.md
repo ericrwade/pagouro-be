@@ -36,6 +36,12 @@ hash-anchored, mirrored. Public since 2026-09-29.*
 - **Yours.** Outputs are CC0 (O-28). No watermark. Nothing you type leaves the machine;
   `docs/THREAT_MODEL.md` (inherited from Pagouro) says exactly what that covers.
 
+## What it draws
+
+![twelve gate pictures](showcase/sheet.jpg)
+
+Twelve pictures from the model's own gate run, chosen by hand, not retouched, with the judge's verdict on each: `showcase/README.md`. The last one is a lettering failure kept on purpose.
+
 ## Status
 
 **Released 2026-09-29, version 1.0, frozen.** Download: https://github.com/ericrwade/pagouro-be/releases/tag/v1.0 (kit + model parts; the one-zip stick, SHA-256 `f6a059dd…`, is on Hugging Face) · weights and ledger: https://huggingface.co/Pagouro/pagouro-be-1.0 · manifest SHA-256 `fcbc785d…`, signed with the Pagouro key, timestamped on Bitcoin block 969239 (OpenTimestamps). Mirror with the receipts: https://pagouro.qstorage.quilibrium.com/ . The N100 timing is the one number still to measure.
