@@ -26,6 +26,12 @@ and prints (Library of Congress *Artist Posters*, The Met Open Access, Art Insti
 its own ledger row and a one-sentence content caption written by a vision model and labelled as such.
 Everything in our part was made before 1929; the base's photographs were uploaded before 2015.
 
+## What it draws
+
+![twelve gate pictures](showcase/sheet.jpg)
+
+Twelve pictures from the model's own gate run, chosen by hand and not retouched; captions, seeds and the judge's verdicts in `showcase/README.md`. The last is a lettering failure kept on purpose.
+
 ## The numbers on the box
 
 Measured on the frozen 40-caption gate (`evals/gate40.jsonl`, committed before any training), 4 seeds each,
