@@ -18,7 +18,7 @@ Released 2026-09-29, version 1.0, frozen. Repo public (not archived), release v1
 `Pagouro/pagouro-be-1.0` public, manifest `fcbc785d…` signed with the Pagouro key and attested in Bitcoin
 block 969239, mirror at https://pagouro.qstorage.quilibrium.com/ . Shipped bytes: `release/Pagouro-BE-1.0/`
 (67 files) and `release/dist/` (one zip `f6a059dd…`, kit, model parts). Local stick `D:\Pagouro-BE`.
-Nothing runs, nothing is rented. The one unmeasured number: seconds per picture on an Intel N100 laptop.
+Nothing runs, nothing is rented. Every box number is measured (N100: 52 min per picture, 2026-10-01).
 
 ## Layout
 

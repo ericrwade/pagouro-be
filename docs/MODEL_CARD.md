@@ -93,7 +93,7 @@ sd-cli -m pagouro-be-1.0-f16.gguf -p "belleposter, Belle Epoque lithograph poste
 ```
 
 Keep the prefix `belleposter, Belle Epoque lithograph poster,` — it is the trigger the corpus was captioned
-with. About 100–200 s per picture on a 16-core desktop CPU. With diffusers, load the `.safetensors` UNet into
+with. About 95 s per picture on an idle 16-core desktop CPU; about 52 minutes on an Intel N100 laptop (measured, from the stick). With diffusers, load the `.safetensors` UNet into
 the CommonCanvas-S-C pipeline (the SD2 configs on the Hub are gated; CommonCanvas ships its own).
 
 ## Licences

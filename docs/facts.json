@@ -52,7 +52,7 @@
     "model_file": "model/pagouro-be-1.0-f16.gguf",
     "model_bytes": 2580023872,
     "seconds_per_image_desk_cpu": "95 s per 512-px image at 20 steps, run from the USB stick with the machine otherwise idle (AMD Ryzen AI MAX+ 395, 16 cores, 2026-09-29); 95-197 s with a miner active on the same machine",
-    "seconds_per_image_n100": null,
+    "seconds_per_image_n100": "3,099 s (51.6 min) for one 512-px picture at 20 steps on an Intel N100 laptop, run from the USB stick, plugged in; model load from the stick 103 s on top; measured by Eric 2026-10-01",
     "note": "q8_0 quantisation of this checkpoint produced blank images on CPU (evals/round3/); the f16 file ships",
     "desk_cpu": "AMD Ryzen AI MAX+ 395 (16 cores)",
     "seconds_per_image_desk_cpu_runs": [
@@ -60,7 +60,14 @@
       95,
       197,
       95
-    ]
+    ],
+    "n100_breakdown_s": {
+      "model_load_from_stick": 103,
+      "text_encoding": 49,
+      "sampling_20_steps": 2832,
+      "vae_decode": 217,
+      "total_generate": 3099
+    }
   },
   "licenses": {
     "weights": "CC-BY-SA-4.0",

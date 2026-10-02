@@ -38,7 +38,7 @@ The full record is O-49 and D-102 in `docs/DECISIONS.md`, and `docs/ERRATA_v1.0.
 
 The untuned base draws the subject 62 % of the time under the same rubric. **What it does badly:** it adds
 lettering to most pictures whether asked or not, and the lettering is not readable. About 95 seconds per picture on an idle 16-core desktop CPU, run from the
-stick; two to three minutes when the machine is busy.
+stick; two to three minutes when the machine is busy; about 52 minutes on an Intel N100 laptop (measured).
 
 ## Download
 

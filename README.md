@@ -61,7 +61,7 @@ Twelve pictures from the model's own gate run, chosen by hand, not retouched, wi
 
 ## Status
 
-**Released 2026-09-29, version 1.0, frozen.** Download: https://github.com/ericrwade/pagouro-be/releases/tag/v1.0 (kit + model parts; the one-zip stick, SHA-256 `f6a059dd…`, is on Hugging Face) · weights and ledger: https://huggingface.co/Pagouro/pagouro-be-1.0 · manifest SHA-256 `fcbc785d…`, signed with the Pagouro key, timestamped on Bitcoin block 969239 (OpenTimestamps). Mirror with the receipts: https://pagouro.qstorage.quilibrium.com/ . The N100 timing is the one number still to measure.
+**Released 2026-09-29, version 1.0, frozen.** Download: https://github.com/ericrwade/pagouro-be/releases/tag/v1.0 (kit + model parts; the one-zip stick, SHA-256 `f6a059dd…`, is on Hugging Face) · weights and ledger: https://huggingface.co/Pagouro/pagouro-be-1.0 · manifest SHA-256 `fcbc785d…`, signed with the Pagouro key, timestamped on Bitcoin block 969239 (OpenTimestamps). Mirror with the receipts: https://pagouro.qstorage.quilibrium.com/ . On an Intel N100 laptop, from the stick: about 52 minutes per picture (measured 2026-10-01), so the box says "minutes on a desktop, most of an hour on a cheap laptop".
 
 | Field | Value |
 |---|---|
@@ -70,6 +70,6 @@ Twelve pictures from the model's own gate run, chosen by hand, not retouched, wi
 | Training | three rounds, 17,000 steps of full UNet fine-tune in all, 1× A100 80 GB, bf16, $7.72 read from the bill; round 3 ships (centre crops, lettering-free images ×2) |
 | Gate (judge, strict rubric) | subject drawn 131/160 (82 %); untuned base 62 %; unasked lettering 136/160 (85 %); asked words legible 2/24 |
 | Gate (human) | 40 pictures from the shipped model, one per caption, scored by a person: subject drawn 34/40 (85 %), poster style 36/40 (90 %), asked words legible 0/6; the judge agrees with the person on subject 34/40 (85 %) |
-| Runs on | any 64-bit Windows CPU via stable-diffusion.cpp, f16 GGUF (2.58 GB; the q8_0 quantisation of this checkpoint draws blanks, so f16 ships); 95 s per 512-px image at 20 steps from the USB stick on an idle 16-core desktop (95–197 s with a miner active on the same machine) |
+| Runs on | any 64-bit Windows CPU via stable-diffusion.cpp, f16 GGUF (2.58 GB; the q8_0 quantisation of this checkpoint draws blanks, so f16 ships); 95 s per 512-px image at 20 steps from the USB stick on an idle 16-core desktop (95–197 s with a miner active on the same machine); 3,099 s (52 min) on an Intel N100 laptop from the stick, plus 103 s to load the model |
 | Licences | model weights CC-BY-SA-4.0 (share-alike inherited from the base); code Apache 2.0; outputs CC0 |
 | Made by | Eric Wade, with Claude (Anthropic) |
