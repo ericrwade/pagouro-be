@@ -32,10 +32,13 @@ def small_jpeg(path, max_side=640):
     b = io.BytesIO(); im.save(b, "JPEG", quality=85); return b.getvalue()
 
 
-def one(key, model, path, tries=3):
+def one(key, model, path, tries=3, expect=""):
     data = base64.b64encode(small_jpeg(path)).decode()
-    body = {"model": model, "max_tokens": 220, "temperature": 0.1, "messages": [{"role": "user", "content": [
-        {"type": "text", "text": PROMPT}, {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{data}"}}]}]}
+    prompt = PROMPT
+    if expect:
+        prompt = PROMPT[:-1] + f', "on_topic": true|false}}. on_topic is true only if the picture clearly shows {expect} as its main content (not a landscape, building, label, map or object that merely relates to it).'
+    body = {"model": model, "max_tokens": 240, "temperature": 0.1, "messages": [{"role": "user", "content": [
+        {"type": "text", "text": prompt}, {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{data}"}}]}]}
     err = ""
     for i in range(tries):
         try:
@@ -52,7 +55,8 @@ def one(key, model, path, tries=3):
             if not (isinstance(box, list) and len(box) == 4): box = [0, 0, 1, 1]
             box = [max(0.0, min(1.0, float(x))) for x in box]
             if box[2] - box[0] < 0.3 or box[3] - box[1] < 0.3: box = [0, 0, 1, 1]
-            if cap: return {"caption_content": cap, "artwork_box": box, "has_scan_border": bool(v.get("has_scan_border")), "usage": d.get("usage", {})}
+            if cap: return {"caption_content": cap, "artwork_box": box, "has_scan_border": bool(v.get("has_scan_border")),
+                            "on_topic": (None if not expect else bool(v.get("on_topic"))), "usage": d.get("usage", {})}
             err = "empty caption"
         except Exception as e:  # noqa: BLE001
             err = str(e)[:120]; time.sleep(2 * (i + 1))
@@ -65,6 +69,7 @@ def main():
     ap.add_argument("--model", default="qwen/qwen3.6-27b")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--cap", type=int, default=100000)
+    ap.add_argument("--expect", default="", help="the subject the corpus should show; adds an on_topic yes/no to each row")
     a = ap.parse_args()
     key = load_key()
     out_path = a.ledger + ".captions.jsonl"; done = set()
@@ -80,7 +85,7 @@ def main():
     print(f"{len(done)} done; {len(todo)} to caption with {a.model}", flush=True)
     n = fail = 0; tin = tout = 0; t0 = time.time()
     with io.open(out_path, "a", encoding="utf-8", newline="\n") as out, cf.ThreadPoolExecutor(a.workers) as ex:
-        futs = {ex.submit(one, key, a.model, p): oid for oid, p in todo}
+        futs = {ex.submit(one, key, a.model, p, 3, a.expect): oid for oid, p in todo}
         for f in cf.as_completed(futs):
             oid = futs[f]; v = f.result()
             if "error" in v: fail += 1; print("  failed", oid, v["error"][:80], flush=True); continue
