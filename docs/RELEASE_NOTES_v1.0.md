@@ -10,6 +10,23 @@ only on Creative Commons photographs). Our part: 3,043 public-domain posters and
 The Met, Art Institute of Chicago), one ledger row and one labelled machine-written caption each, three
 fine-tuning rounds on a rented A100 for $7.72 read from the bill. `CORPUS.md` has the counts.
 
+## Post-publication note (2026-10-01)
+
+Two days after release, two independent audits of the Pagouro project (one by Grok, one by ChatGPT, both
+asked "is it as FOSS as they claim?") found things we had stated too strongly or left out. We want you to
+know what they found and what changed. Nothing that shipped was altered; the record was corrected around it.
+
+- The model card did not name the model that wrote the training captions. It was Gemini 2.5 Flash-Lite
+  through OpenRouter; Google's API terms restrict using outputs to develop competing models, and our reading
+  is that a poster fine-tune of a Creative-Commons diffusion model is not one. The captions are the one
+  training input without a public licence, and a future version can re-caption with an open-weights model.
+- CommonCanvas-S-C's text encoder (OpenCLIP, trained on LAION captions) and its Stable Diffusion 2 VAE are
+  inherited unchanged; they are not covered by the museum ledger or CommonCanvas's CC image set (erratum E2).
+- The final selection-and-crop ledger was missing from the signed kit by a packaging slip; it is on Hugging
+  Face and in the repository as `ledger/training_set_r3.jsonl` (erratum E1).
+
+The full record is O-49 and D-102 in `docs/DECISIONS.md`, and `docs/ERRATA_v1.0.md`.
+
 ## The numbers on the box
 
 | | person (40 pictures) | judge (160 pictures) | judge agrees with the person |
