@@ -22,6 +22,12 @@ know what they found and what changed. Nothing that shipped was altered; the rec
 - The final selection-and-crop ledger was missing from the signed kit by a packaging slip; it is on Hugging
   Face and in the repository as `ledger/training_set_r3.jsonl` (erratum E1).
 
+**Follow-up (2026-10-02).** Both auditors re-ran their checks after the changes and upgraded their assessments.
+What they found has been fixed to the extent it can be. What remains is recorded as a limit rather than a
+fix: the pretraining volume's per-shard metadata was deleted with the rented pod; the web crawl's licence
+covers the dataset, not each page; and Pagouro BE's captions came from a commercial API. A future version is
+the honest path for those, never an edit of 1.0.
+
 The full record is O-49 and D-102 in `docs/DECISIONS.md`, and `docs/ERRATA_v1.0.md`.
 
 ## What it is, said plainly
