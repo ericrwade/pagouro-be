@@ -37,7 +37,10 @@ def one(key, model, path, tries=3, expect=""):
     prompt = PROMPT
     if expect:
         prompt = PROMPT[:-1] + f', "on_topic": true|false}}. on_topic is true only if the picture clearly shows {expect} as its main content (not a landscape, building, label, map or object that merely relates to it).'
-    body = {"model": model, "max_tokens": 240, "temperature": 0.1, "messages": [{"role": "user", "content": [
+    # Qwen 3.x models "think" before answering; with reasoning on, 240 tokens were eaten by the thinking and the JSON
+    # never came (734 of 802 empty on the first ukiyo-e pass). Reasoning off, and room for the answer.
+    body = {"model": model, "max_tokens": 700, "temperature": 0.1, "reasoning": {"enabled": False},
+            "messages": [{"role": "user", "content": [
         {"type": "text", "text": prompt}, {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{data}"}}]}]}
     err = ""
     for i in range(tries):
