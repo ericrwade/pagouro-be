@@ -42,10 +42,13 @@ def main():
             if os.path.exists(cp):
                 for l in io.open(cp, encoding="utf-8"):
                     c = json.loads(l); caps[c["id"]] = c
+            off = 0
             for l in io.open(lp, encoding="utf-8"):
                 r = json.loads(l); c = caps.get(r["id"])
                 if not c: continue
+                if c.get("on_topic") is False: off += 1; continue     # the captioner says the picture is not the style's subject
                 rows.append((r, c, os.path.join(DATA, "styles", folder, r["file"])))
+            print(f"  {folder}: {off} rows dropped as off-topic")
         rows = rows[:a.max_per_style]
         out = os.path.join(DATA, "styles_train", st); d = os.path.join(out, str(a.size)); os.makedirs(d, exist_ok=True)
         kept = faint = bad = 0; seen = set()
