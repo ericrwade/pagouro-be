@@ -1,0 +1,47 @@
+{
+  "_about": "Pagouro BE Styles (D-103). One entry per style: the trigger token the LoRA is addressed with, the style phrase that follows it in every training caption and at inference, the one-line description the judge compares against, and the corpus folders under data/images/styles/.",
+  "rockart": {
+    "name": "Rock art of the American Southwest",
+    "trigger": "pgrockart",
+    "phrase": "ancient petroglyph rock art, figures pecked into dark desert stone",
+    "judge": "looks like ancient Southwestern rock art: simplified figures and animals pecked or painted on rough rock, flat silhouettes, earth tones, no shading or perspective",
+    "folders": ["rockart"],
+    "note": "Photographs of ancestral sites (Wikimedia Commons, per-file CC0 / public domain / CC BY / CC BY-SA, each attributed in the ledger). The pack makes no claim to the cultures' meanings."
+  },
+  "ukiyoe": {
+    "name": "Ukiyo-e woodblock print",
+    "trigger": "pgukiyoe",
+    "phrase": "Japanese ukiyo-e woodblock print",
+    "judge": "looks like a Japanese woodblock print: flat colour areas, black outline, patterned fabrics, no Western shading or perspective",
+    "folders": ["ukiyoe"]
+  },
+  "egyptian": {
+    "name": "Egyptian tomb painting",
+    "trigger": "pgegyptian",
+    "phrase": "ancient Egyptian tomb wall painting",
+    "judge": "looks like an ancient Egyptian wall painting: figures in profile with frontal shoulders, flat registers, ochre, black, blue-green and white on a plaster-coloured ground",
+    "folders": ["egyptian"]
+  },
+  "greekvase": {
+    "name": "Greek vase painting",
+    "trigger": "pggreekvase",
+    "phrase": "ancient Greek vase painting, black-figure or red-figure on terracotta",
+    "judge": "looks like Greek vase painting: black or red-orange figures on the opposite ground, silhouette profiles, incised detail, meander borders",
+    "folders": ["greekvase"]
+  },
+  "naturalhistory": {
+    "name": "Natural-history plate",
+    "trigger": "pgnaturalplate",
+    "phrase": "hand-coloured natural history engraving plate",
+    "judge": "looks like a 19th-century natural-history plate: a single specimen drawn precisely, hand-coloured, on a plain pale ground, perhaps with a branch or a ground line",
+    "folders": ["naturalhistory"]
+  },
+  "dutch": {
+    "name": "Dutch Golden Age painting",
+    "trigger": "pgdutchpainting",
+    "phrase": "17th-century Dutch oil painting",
+    "judge": "looks like a 17th-century Dutch oil painting: naturalistic faces and hands, dark ground, warm directed light, fine fabric and still-life detail",
+    "folders": ["dutch"],
+    "note": "The anatomy candidate: the corpus is full of real faces and hands."
+  }
+}
