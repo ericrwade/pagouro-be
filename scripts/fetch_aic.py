@@ -17,7 +17,7 @@ import argparse, hashlib, io, json, os, struct, sys, time, urllib.parse, urllib.
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.environ.get("PAGOURO_DATA") or os.path.join(os.path.dirname(HERE), "..", "PAGOURO_BUILD", "data", "images")
-OUT = os.path.join(os.path.abspath(DATA), "aic")
+OUT = os.path.join(os.path.abspath(DATA), "aic")   # overridden by --style
 LEDGER = os.path.join(OUT, "ledger.jsonl")
 API = "https://api.artic.edu/api/v1/artworks/search"
 IIIF = "https://www.artic.edu/iiif/2/{image_id}/full/843,/0/default.jpg"
@@ -59,7 +59,12 @@ def main():
     ap.add_argument("--max-year", type=int, default=1928)
     ap.add_argument("--min-year", type=int, default=1860)
     ap.add_argument("--limit", type=int, default=100)
+    ap.add_argument("--style", default="", help="write under data/images/styles/<style>/ instead of aic/")
+    ap.add_argument("--classification", default="", help="match on classification_titles (e.g. vessel)")
     a = ap.parse_args()
+    global OUT, LEDGER
+    if a.style:
+        OUT = os.path.join(os.path.abspath(DATA), "styles", a.style); LEDGER = os.path.join(OUT, "ledger.jsonl")
     os.makedirs(OUT, exist_ok=True)
     have = set()
     if os.path.exists(LEDGER):
@@ -73,7 +78,8 @@ def main():
             {"term": {"is_public_domain": True}},
             {"exists": {"field": "image_id"}},
             {"range": {"date_start": {"gte": a.min_year, "lte": a.max_year}}},
-            ({"match_phrase": {"medium_display": a.medium}} if a.medium else
+            ({"match": {"classification_titles": a.classification}} if a.classification else
+             {"match_phrase": {"medium_display": a.medium}} if a.medium else
              {"multi_match": {"query": a.query, "fields": ["title", "classification_titles", "medium_display", "term_titles", "subject_titles"]}}),
         ]}},
         "fields": FIELDS.split(","),
@@ -113,7 +119,7 @@ def main():
                 with open(os.path.join(OUT, fn), "wb") as f:
                     f.write(img)
                 row = {
-                    "source": "aic", "id": oid, "file": fn, "title": r.get("title"),
+                    "source": "aic", "style": a.style or None, "id": oid, "file": fn, "title": r.get("title"),
                     "artist": r.get("artist_title") or r.get("artist_display"), "artist_display": r.get("artist_display"),
                     "date": r.get("date_display"), "year": ys, "year_end": r.get("date_end"),
                     "medium": r.get("medium_display"), "classification": r.get("classification_titles"),
