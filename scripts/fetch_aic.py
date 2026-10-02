@@ -31,6 +31,9 @@ def get(url, data=None, tries=4):
             req = urllib.request.Request(url, data=data, headers={**UA, **({"Content-Type": "application/json"} if data else {})})
             with urllib.request.urlopen(req, timeout=60) as r:
                 return r.read()
+        except urllib.error.HTTPError as e:
+            wait = 90 if e.code in (403, 429) else 3 * (i + 1)
+            print(f"  http {e.code}, sleeping {wait}s", flush=True); time.sleep(wait)
         except Exception as e:  # noqa: BLE001
             print(f"  retry {i+1}: {e}", flush=True)
             time.sleep(3 * (i + 1))
@@ -110,7 +113,7 @@ def main():
                     continue
                 url = IIIF.format(image_id=r["image_id"])
                 img = get(url)
-                time.sleep(0.6)
+                time.sleep(1.5)
                 if not img or len(img) < 5000:
                     print(f"  skip {oid}: no image", flush=True)
                     continue
