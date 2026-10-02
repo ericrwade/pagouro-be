@@ -38,6 +38,12 @@ that the style brief names (D-74): it includes British and American posters, Fir
 Redon's and Fantin-Latour's tonal lithographs, and the Met's trade cards and natural-history plates.
 The trigger word and the caption prefix carry the style; the content caption carries the picture.
 
+**What it also learned (noticed 2026-10-01).** Some pictures come out as a photograph of a poster rather than
+the poster itself: a black border, a mount, and on the left edge the colour-calibration strip that archive
+scanners place beside an object. The Library of Congress and museum images are scans of physical sheets, and
+the model learned the scanning as part of the style. A future version can crop the strips out of the corpus;
+this one draws them sometimes, and the lighthouse drawn on an N100 laptop is an example (`showcase/`).
+
 ## Captions
 
 Each training caption is assembled as
