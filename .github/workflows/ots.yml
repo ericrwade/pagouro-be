@@ -1,8 +1,9 @@
 name: ots
 
-# OpenTimestamps for the signed manifest, on a Linux runner (the client does not run on Windows Python).
-# mode=stamp   : stamps docs/MANIFEST_v1.0.md -> uploads the pending .ots as a workflow artifact
-# mode=upgrade : upgrades the committed docs/MANIFEST_v1.0.md.ots once a Bitcoin block includes it -> artifact
+# OpenTimestamps for a signed manifest, on a Linux runner (the client does not run on Windows Python).
+# mode=stamp   : stamps docs/<manifest> -> uploads the pending .ots as a workflow artifact
+# mode=upgrade : upgrades the committed docs/<manifest>.ots once a Bitcoin block includes it -> artifact
+# manifest     : MANIFEST_v1.0.md (Pagouro BE 1.0, default) or MANIFEST_styles-1.0.md (the Styles pack)
 # The session downloads the artifact and commits it; nothing is pushed by the runner.
 
 on:
@@ -12,32 +13,38 @@ on:
         description: stamp or upgrade
         required: true
         default: stamp
+      manifest:
+        description: manifest file name under docs/
+        required: false
+        default: MANIFEST_v1.0.md
 
 jobs:
   ots:
     runs-on: ubuntu-latest
+    env:
+      M: docs/${{ github.event.inputs.manifest || 'MANIFEST_v1.0.md' }}
     steps:
       - uses: actions/checkout@v4
       - run: pip install -q opentimestamps-client && ots --version
       - name: Verify the signature first
         run: |
           sudo apt-get install -y -qq minisign >/dev/null
-          minisign -Vm docs/MANIFEST_v1.0.md -p docs/pagouro.pub
-          sha256sum docs/MANIFEST_v1.0.md
+          minisign -Vm "$M" -p docs/pagouro.pub
+          sha256sum "$M"
       - name: Stamp
         if: ${{ github.event.inputs.mode == 'stamp' }}
         run: |
-          rm -f docs/MANIFEST_v1.0.md.ots
-          ots stamp docs/MANIFEST_v1.0.md
-          ots info docs/MANIFEST_v1.0.md.ots | head -20
+          rm -f "$M.ots"
+          ots stamp "$M"
+          ots info "$M.ots" | head -20
       - name: Upgrade
         if: ${{ github.event.inputs.mode == 'upgrade' }}
         run: |
-          ots upgrade docs/MANIFEST_v1.0.md.ots || true
-          ots info docs/MANIFEST_v1.0.md.ots | tail -5
-          ots --no-bitcoin verify docs/MANIFEST_v1.0.md.ots || true
+          ots upgrade "$M.ots" || true
+          ots info "$M.ots" | tail -5
+          ots --no-bitcoin verify "$M.ots" || true
       - uses: actions/upload-artifact@v4
         with:
           name: manifest-ots-${{ github.event.inputs.mode }}
-          path: docs/MANIFEST_v1.0.md.ots
+          path: ${{ env.M }}.ots
           if-no-files-found: error
