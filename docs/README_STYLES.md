@@ -22,8 +22,9 @@ PAGOURO-BE-STYLE ukiyoe "a lighthouse on a rocky coast at dusk" 20 1234
 ```
 
 The picture lands in `workspace\art\`. Each style has a trigger phrase the launcher adds for you; with
-`sd-cli` directly, use `--lora-model-dir styles` and end the prompt with `<lora:ukiyoe:1.0>` (the weight
-`STYLES.md` recommends).
+`sd-cli` directly, use `--lora-model-dir styles`, `--sampling-method dpm++2m -W 512 -H 512`, and end the
+prompt with `<lora:ukiyoe:1.0>` (the weight `STYLES.md` recommends). Stay at 512x512: the styles were
+trained and measured at that size, and at 384x384 the rock-art style collapsed into a purple field.
 
 ## What it does badly, said plainly
 
@@ -38,7 +39,8 @@ The picture lands in `workspace\art\`. Each style has a trigger phrase the launc
 
 ## What is in it
 
-`styles/` the six LoRA files · `ledger/` one training-set ledger per style (source, licence, attribution,
+`styles/` the six LoRA files (rank 64, original Stable Diffusion tensor names with alpha, the layout
+stable-diffusion.cpp reads) · `ledger/` one training-set ledger per style (source, licence, attribution,
 artwork crop, caption as trained) · `evals/` the gate, verdicts, sheets · `styles.json` triggers and
 descriptions · `MANIFEST.md` with signature and timestamp proof · `LICENSES.md`.
 

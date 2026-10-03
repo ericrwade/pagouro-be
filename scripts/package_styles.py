@@ -1,7 +1,7 @@
 """Package Pagouro BE Styles 1.0 (D-103): a folder that drops into a Pagouro BE stick.
 
   Pagouro-BE-Styles-1.0/
-    styles/<name>.safetensors        one LoRA per style (diffusers/PEFT format; stable-diffusion.cpp loads it)
+    styles/<name>.safetensors        one LoRA per style, original-SD tensor names + alpha (convert_lora_kohya.py --ldm)
     PAGOURO-BE-STYLE.bat             PAGOURO-BE-STYLE rockart "a black cat"  -> workspace\\art\\<time>.png
     STYLES.md                        per style: what it is, corpus and licences, gate numbers, recommended weight
     ledger/<name>.jsonl              the training-set ledger per style (source row, licence, attribution, crop, caption)
@@ -21,6 +21,8 @@ REM Pagouro BE Styles - draws in one of the pack's styles, on your CPU, offline.
 REM put this folder's "styles" folder inside your Pagouro-BE folder (next to sd\ and model\), or run from there.
 REM   PAGOURO-BE-STYLE rockart "a black cat sitting upright"
 REM   PAGOURO-BE-STYLE ukiyoe "a lighthouse on a rocky coast" 20 1234      (steps, seed)
+REM Always 512x512 with the DPM++ 2M sampler: the styles were trained and measured at that size and sampler
+REM (at 384x384 the rock-art style collapsed to a purple field).
 setlocal
 cd /d "%~dp0"
 if "%~2"=="" (
@@ -50,7 +52,7 @@ if not exist %BEDIR%\workspace\art mkdir %BEDIR%\workspace\art
 for /f "tokens=1-3 delims=/: " %%a in ("%time%") do set T=%%a%%b%%c
 set OUT=%BEDIR%\workspace\art\%STYLE%-%date:~-4%%date:~-10,2%%date:~-7,2%-%T: =0%.png
 echo Drawing "%~2" in the %STYLE% style (%STEPS% steps) ...
-%BEDIR%\sd\sd-cli.exe -m %BEDIR%\model\pagouro-be-1.0-f16.gguf --lora-model-dir "%~dp0styles" -p "%PREFIX%, %~2 <lora:%STYLE%:%W%>" -n "photograph, photo, 3d render, blurry, watermark, text, lettering, words, caption, title, modern, gradient" --steps %STEPS% --cfg-scale 7 -W 512 -H 512 -s %SEED% -o "%OUT%" -v 2>nul | findstr /i "sampling completed"
+%BEDIR%\sd\sd-cli.exe -m %BEDIR%\model\pagouro-be-1.0-f16.gguf --lora-model-dir "%~dp0styles" -p "%PREFIX%, %~2 <lora:%STYLE%:%W%>" -n "photograph, photo, 3d render, blurry, watermark, text, lettering, words, caption, title, modern, gradient" --steps %STEPS% --cfg-scale 7 --sampling-method dpm++2m -W 512 -H 512 -s %SEED% -o "%OUT%" -v 2>nul | findstr /i "sampling completed"
 if exist "%OUT%" (echo Saved %OUT%) else (echo Nothing was drawn. Run sd\sd-cli.exe --help for details.)
 endlocal
 """
@@ -98,7 +100,11 @@ def main():
         if key in summ: summ[k] = summ[key]
     for k in names:
         cfg = styles[k]
-        src = os.path.join(BE, "runs", "styles", k, "lora", "pytorch_lora_weights.safetensors")
+        # the LoRA as trained (diffusers naming) matched 0 of 384 tensors in stable-diffusion.cpp; the pack ships the same
+        # weights renamed to the original Stable Diffusion tensor names (scripts/convert_lora_kohya.py --ldm), which apply 384/384
+        src = os.path.join(BE, "runs", "styles_ldm", f"{k}.safetensors")
+        if not os.path.exists(src):
+            raise SystemExit(f"missing converted LoRA {src}: run convert_lora_kohya.py --ldm first")
         shutil.copyfile(src, os.path.join(out, "styles", f"{k}.safetensors"))
         led = os.path.join(DATA, "styles_train", k, "ledger.jsonl")
         if os.path.exists(led): shutil.copyfile(led, os.path.join(out, "ledger", f"{k}.jsonl"))
