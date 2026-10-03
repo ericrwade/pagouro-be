@@ -69,7 +69,7 @@ Twelve pictures from the model's own gate run, chosen by hand, not retouched, wi
 
 ![six styles, five captions](showcase/styles_sheet.jpg)
 
-Six LoRA style plugins trained on the shipped model from licensed, ledgered corpora: Southwestern rock art, ukiyo-e, Egyptian tomb painting, Greek vase painting, natural-history plates, Dutch Golden Age painting. Each row above is one style, each column one gate caption, at the LoRA weight the pack ships. Numbers, corpora and licences: `docs/README_STYLES.md`, `evals/results/styles/`. Pack release: *Pagouro BE Styles 1.0* (signed separately; BE 1.0 unchanged).
+Six LoRA style plugins trained on the shipped model from licensed, ledgered corpora: Southwestern rock art, ukiyo-e, Egyptian tomb painting, Greek vase painting, natural-history plates, Dutch Golden Age painting. Each row above is one style, each column one gate caption, at the LoRA weight the pack ships. Numbers, corpora and licences: `docs/README_STYLES.md`, `evals/results/styles/`. Pack release: [GitHub `styles-1.0`](https://github.com/ericrwade/pagouro-be/releases/tag/styles-1.0) · [Hugging Face `Pagouro/pagouro-be-styles-1.0`](https://huggingface.co/Pagouro/pagouro-be-styles-1.0) · [mirror](https://pagouro.qstorage.quilibrium.com/) — manifest SHA-256 `9b0a5a72…`, signed with the Pagouro key (`docs/MANIFEST_styles-1.0.md`, `.minisig`, `.ots`); BE 1.0 unchanged. Draws at 512x512 only; put `styles\` and `PAGOURO-BE-STYLE.bat` inside your Pagouro-BE folder.
 
 ## Status
 
