@@ -89,3 +89,6 @@ showcase/x180/*.png
 showcase/x180/512/
 showcase/x180/raw/
 showcase/x180/upscaled/
+showcase/**/thumbs/
+showcase/x180/sc.log
+showcase/x180/chosen_list.txt

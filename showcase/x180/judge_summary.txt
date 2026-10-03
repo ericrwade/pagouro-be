@@ -1,0 +1,3 @@
+judge google/gemini-2.5-flash: 540 pictures judged; subject 415/540, lettering 398/540 over all seeds.
+chosen 180: subject failed on every seed 14, lettering present in the chosen picture 97.
+tokens in 819498, out 38017.
