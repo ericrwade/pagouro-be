@@ -128,6 +128,8 @@ def main():
     shutil.copyfile(os.path.join(BE, "styles.json"), os.path.join(out, "styles.json"))
     ss = os.path.join(BE, "showcase", "styles_sheet.jpg")
     if os.path.exists(ss): shutil.copyfile(ss, os.path.join(out, "evals", "styles_sheet.jpg"))
+    rc = os.path.join(BE, "evals", "results", "styles", "runtime_check_512.jpg")  # the six styles through sd-cli itself
+    if os.path.exists(rc): shutil.copyfile(rc, os.path.join(out, "evals", "runtime_check_512.jpg"))
     for fn in ("README_STYLES.md", "LICENSES_STYLES.md"):
         p = os.path.join(BE, "docs", fn)
         if os.path.exists(p): shutil.copyfile(p, os.path.join(out, fn.replace("_STYLES", "")))

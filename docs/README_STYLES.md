@@ -40,7 +40,8 @@ trained and measured at that size, and at 384x384 the rock-art style collapsed i
 ## What is in it
 
 `styles/` the six LoRA files (rank 64, original Stable Diffusion tensor names with alpha, the layout
-stable-diffusion.cpp reads) · `ledger/` one training-set ledger per style (source, licence, attribution,
+stable-diffusion.cpp reads; `evals/runtime_check_512.jpg` is every style drawn through the stick's own
+runtime, two captions each, at the recommended weights) · `ledger/` one training-set ledger per style (source, licence, attribution,
 artwork crop, caption as trained) · `evals/` the gate, verdicts, sheets · `styles.json` triggers and
 descriptions · `MANIFEST.md` with signature and timestamp proof · `LICENSES.md`.
 
