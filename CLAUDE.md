@@ -20,6 +20,12 @@ block 969239, mirror at https://pagouro.qstorage.quilibrium.com/ . Shipped bytes
 (67 files) and `release/dist/` (one zip `f6a059dd…`, kit, model parts). Local stick `D:\Pagouro-BE`.
 Nothing runs, nothing is rented. Every box number is measured (N100: 52 min per picture, 2026-10-01).
 
+**Styles pack (D-103, 2026-10-02): built, not released.** `release/Pagouro-BE-Styles-1.0/` (six LoRAs, manifest
+`9b0a5a72…`) waits for Eric's minisign signature; then ots (`manifest` input), release `styles-1.0`, HF, mirror.
+LoRAs ship as original-SD names + alpha (`scripts/convert_lora_kohya.py --ldm`); draw only at 512x512 with
+DPM++ 2M (see the D-103 runtime paragraph). Rebuild: `scripts/package_styles.py --version 1.0 --weights
+rockart=0.6,greekvase=0.6,naturalhistory=0.8,egyptian=0.8,ukiyoe=1.0,dutch=1.0`.
+
 ## Layout
 
 `scripts/` — corpus fetchers (LoC, AIC, Met), captioning, training-set builders, pod scripts
