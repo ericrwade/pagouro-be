@@ -120,6 +120,8 @@ def main():
         sh = os.path.join(rs, k, "sheet.jpg")
         if os.path.exists(sh): shutil.copyfile(sh, os.path.join(out, "evals", f"sheet_{k}.jpg"))
     shutil.copyfile(os.path.join(BE, "styles.json"), os.path.join(out, "styles.json"))
+    ss = os.path.join(BE, "showcase", "styles_sheet.jpg")
+    if os.path.exists(ss): shutil.copyfile(ss, os.path.join(out, "evals", "styles_sheet.jpg"))
     for fn in ("README_STYLES.md", "LICENSES_STYLES.md"):
         p = os.path.join(BE, "docs", fn)
         if os.path.exists(p): shutil.copyfile(p, os.path.join(out, fn.replace("_STYLES", "")))

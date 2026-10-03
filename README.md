@@ -65,6 +65,12 @@ The full record is O-49 and D-102 in `docs/DECISIONS.md`, and `docs/ERRATA_v1.0.
 
 Twelve pictures from the model's own gate run, chosen by hand, not retouched, with the judge's verdict on each: `showcase/README.md`. The last one is a lettering failure kept on purpose.
 
+## Styles (D-103)
+
+![six styles, five captions](showcase/styles_sheet.jpg)
+
+Six LoRA style plugins trained on the shipped model from licensed, ledgered corpora: Southwestern rock art, ukiyo-e, Egyptian tomb painting, Greek vase painting, natural-history plates, Dutch Golden Age painting. Each row above is one style, each column one gate caption, at the LoRA weight the pack ships. Numbers, corpora and licences: `docs/README_STYLES.md`, `evals/results/styles/`. Pack release: *Pagouro BE Styles 1.0* (signed separately; BE 1.0 unchanged).
+
 ## Status
 
 **Released 2026-09-29, version 1.0, frozen.** Download: https://github.com/ericrwade/pagouro-be/releases/tag/v1.0 (kit + model parts; the one-zip stick, SHA-256 `f6a059dd…`, is on Hugging Face) · weights and ledger: https://huggingface.co/Pagouro/pagouro-be-1.0 · manifest SHA-256 `fcbc785d…`, signed with the Pagouro key, timestamped on Bitcoin block 969239 (OpenTimestamps). Mirror with the receipts: https://pagouro.qstorage.quilibrium.com/ . On an Intel N100 laptop, from the stick: about 52 minutes per picture (measured 2026-10-01), so the box says "minutes on a desktop, most of an hour on a cheap laptop".
