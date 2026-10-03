@@ -87,11 +87,15 @@ def main():
             "| style | trigger and phrase | recommended weight | corpus | subject | style match | anatomy ok | unasked lettering |",
             "|---|---|---|---|---|---|---|---|"]
     summ = {}
-    for p in (os.path.join(BE, "runs", "styles", "summary.md"),):
+    for p in (os.path.join(BE, "runs", "styles", "summary.md"), os.path.join(BE, "runs", "styles", "summary_gate_w60.md"), os.path.join(BE, "runs", "styles", "summary_gate_w80.md")):
         if os.path.exists(p):
             for line in io.open(p, encoding="utf-8"):
                 if line.startswith("| ") and not line.startswith("| style") and not line.startswith("|---"):
                     cells = [c.strip() for c in line.strip().strip("|").split("|")]; summ[cells[0]] = cells
+    # the numbers shown are the ones measured at the recommended weight (rows are named style, style_w60, style_w80)
+    for k in names:
+        w = weights[k]; key = k if w >= 1.0 else f"{k}_w{int(w*100):02d}"
+        if key in summ: summ[k] = summ[key]
     for k in names:
         cfg = styles[k]
         src = os.path.join(BE, "runs", "styles", k, "lora", "pytorch_lora_weights.safetensors")
