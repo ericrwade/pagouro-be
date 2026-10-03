@@ -83,3 +83,9 @@ release/
 *.gguf
 *.safetensors
 *.pt
+
+# showcase x180: 540 raw + 180 finals (266 MB) stay local; only prompts.jsonl, index.md, README.md are tracked
+showcase/x180/*.png
+showcase/x180/512/
+showcase/x180/raw/
+showcase/x180/upscaled/
