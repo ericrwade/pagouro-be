@@ -61,13 +61,15 @@ def main():
     ap.add_argument("--styles", nargs="+", required=True)
     ap.add_argument("--model", default="google/gemini-2.5-flash")
     ap.add_argument("--workers", type=int, default=6)
+    ap.add_argument("--gate-sub", default="gate", help="gate folder name under each style (gate, gate_w60, gate_w80)")
     a = ap.parse_args()
     k = key(); styles = json.load(io.open(os.path.join(BE, "styles.json"), encoding="utf-8"))
     lines = ["| style | n | subject | style match | anatomy ok (anatomy captions) | unasked lettering |", "|---|---|---|---|---|---|"]
     for st in a.styles:
-        d = os.path.join(a.gate_root, st, "gate"); meta = json.load(open(os.path.join(d, "meta.json"), encoding="utf-8"))
+        d = os.path.join(a.gate_root, st, a.gate_sub); meta = json.load(open(os.path.join(d, "meta.json"), encoding="utf-8"))
         desc = styles.get(st, {}).get("judge", "a Belle Époque lithographic poster: flat colour planes, bold outlines, poster paper")
-        out_path = os.path.join(a.gate_root, f"verdicts_{st}.jsonl"); done = {}
+        suffix = "" if a.gate_sub == "gate" else "_" + a.gate_sub.replace("gate_", "")
+        out_path = os.path.join(a.gate_root, f"verdicts_{st}{suffix}.jsonl"); done = {}
         if os.path.exists(out_path):
             for l in io.open(out_path, encoding="utf-8"): r = json.loads(l); done[r["file"]] = r
         todo = [m for m in meta if m["file"] not in done]
@@ -81,9 +83,10 @@ def main():
                 out.write(json.dumps(r, ensure_ascii=False) + "\n"); out.flush(); done[m["file"]] = r
         n = len(done); subj = sum(r["subject"] for r in done.values()); sm = sum(r["style_match"] for r in done.values())
         an = [r["anatomy_ok"] for r in done.values() if r["anatomy_ok"] is not None]; let = sum(r["unasked_lettering"] for r in done.values())
-        lines.append(f"| {st} | {n} | {subj}/{n} ({100*subj/max(n,1):.0f} %) | {sm}/{n} ({100*sm/max(n,1):.0f} %) | {sum(an)}/{len(an)} | {let}/{n} ({100*let/max(n,1):.0f} %) |")
+        lines.append(f"| {st}{suffix} | {n} | {subj}/{n} ({100*subj/max(n,1):.0f} %) | {sm}/{n} ({100*sm/max(n,1):.0f} %) | {sum(an)}/{len(an)} | {let}/{n} ({100*let/max(n,1):.0f} %) |")
     md = "\n".join(lines); print(md)
-    io.open(os.path.join(a.gate_root, "summary.md"), "w", encoding="utf-8", newline="\n").write(f"# Styles gate — judge {a.model}, {time.strftime('%Y-%m-%d')}\n\n{md}\n")
+    name = "summary.md" if a.gate_sub == "gate" else f"summary_{a.gate_sub}.md"
+    io.open(os.path.join(a.gate_root, name), "w", encoding="utf-8", newline="\n").write(f"# Styles gate ({a.gate_sub}) — judge {a.model}, {time.strftime('%Y-%m-%d')}\n\n{md}\n")
     return 0
 
 
