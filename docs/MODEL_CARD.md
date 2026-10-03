@@ -78,6 +78,16 @@ The untuned base scores 62 % on subject under the same rubric. **What it does ba
 most pictures whether asked or not, and the lettering is not readable. It is not a frontier image model. It
 takes no image input and writes no text.
 
+## Styles (added 2026-10-03)
+
+Six optional style plugins, *Pagouro BE Styles 1.0*, ride on this model unchanged: rock art of the American
+Southwest, Greek vase painting, natural-history plates, Egyptian tomb painting, ukiyo-e, 17th-century Dutch
+painting. Each is a LoRA file trained from a ledgered, licensed corpus with captions from an open-weights model;
+the numbers per style are measured on a frozen 40-caption gate and printed in the pack. Draws at 512x512 only.
+Pack: [Pagouro/pagouro-be-styles-1.0](https://huggingface.co/Pagouro/pagouro-be-styles-1.0) ·
+[GitHub release styles-1.0](https://github.com/ericrwade/pagouro-be/releases/tag/styles-1.0). Nothing in this
+repository changed for it.
+
 ## Files
 
 | file | what |
