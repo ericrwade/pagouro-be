@@ -92,3 +92,11 @@ showcase/x180/upscaled/
 showcase/**/thumbs/
 showcase/x180/sc.log
 showcase/x180/chosen_list.txt
+# showcase jigsaw_b1: 1,272 raw + upscales stay local (tar is the transfer copy); only lists, verdicts, README tracked
+showcase/jigsaw_b1/*.png
+showcase/jigsaw_b1/*.tar
+showcase/jigsaw_b1/*.sha256.remote
+showcase/jigsaw_b1/raw/
+showcase/jigsaw_b1/up/
+showcase/jigsaw_b1/512/
+showcase/x180/upscaled.zip

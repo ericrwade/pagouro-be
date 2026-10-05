@@ -1,0 +1,709 @@
+[
+ {
+  "number": 1,
+  "slug": "eiffel-tower-dusk-seine",
+  "seed": 1004,
+  "kept": true,
+  "file": "b1-001-eiffel-tower-dusk-seine.jpg"
+ },
+ {
+  "number": 2,
+  "slug": "domes-sacrecoeur-montmartre-hill",
+  "seed": 1006,
+  "kept": true,
+  "file": "b1-002-domes-sacrecoeur-montmartre-hill.jpg"
+ },
+ {
+  "number": 7,
+  "slug": "arc-de-triomphe-sunset",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-007-arc-de-triomphe-sunset.jpg"
+ },
+ {
+  "number": 8,
+  "slug": "young-woman-feathered-hat",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-008-young-woman-feathered-hat.jpg"
+ },
+ {
+  "number": 9,
+  "slug": "pont-alexandre-iii-bridge",
+  "seed": 1003,
+  "kept": true,
+  "file": "b1-009-pont-alexandre-iii-bridge.jpg"
+ },
+ {
+  "number": 12,
+  "slug": "carousel-lit-lanterns-night",
+  "seed": 1003,
+  "kept": true,
+  "file": "b1-012-carousel-lit-lanterns-night.jpg"
+ },
+ {
+  "number": 14,
+  "slug": "violinist-evening-dress-playing",
+  "seed": 1008,
+  "kept": true,
+  "file": "b1-014-violinist-evening-dress-playing.jpg"
+ },
+ {
+  "number": 15,
+  "slug": "paper-lanterns-strung-outdoor",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-015-paper-lanterns-strung-outdoor.jpg"
+ },
+ {
+  "number": 16,
+  "slug": "theatre-interior-red-velvet",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-016-theatre-interior-red-velvet.jpg"
+ },
+ {
+  "number": 17,
+  "slug": "clown-juggling-colored-balls",
+  "seed": 1007,
+  "kept": false,
+  "why": "clown face smeared"
+ },
+ {
+  "number": 18,
+  "slug": "fireworks-bursting-river-boats",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-018-fireworks-bursting-river-boats.jpg"
+ },
+ {
+  "number": 21,
+  "slug": "tall-bouquet-pink-peonies",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-021-tall-bouquet-pink-peonies.jpg"
+ },
+ {
+  "number": 22,
+  "slug": "red-poppies-blue-cornflowers",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-022-red-poppies-blue-cornflowers.jpg"
+ },
+ {
+  "number": 24,
+  "slug": "yellow-daffodils-tulips-terracotta",
+  "seed": 1003,
+  "kept": true,
+  "file": "b1-024-yellow-daffodils-tulips-terracotta.jpg"
+ },
+ {
+  "number": 25,
+  "slug": "branch-pink-cherry-blossom",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-025-branch-pink-cherry-blossom.jpg"
+ },
+ {
+  "number": 26,
+  "slug": "purple-lilacs-glass-vase",
+  "seed": 1003,
+  "kept": true,
+  "file": "b1-026-purple-lilacs-glass-vase.jpg"
+ },
+ {
+  "number": 27,
+  "slug": "field-lavender-rows-leading",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-027-field-lavender-rows-leading.jpg"
+ },
+ {
+  "number": 28,
+  "slug": "orange-marigolds-blue-delphiniums",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-028-orange-marigolds-blue-delphiniums.jpg"
+ },
+ {
+  "number": 29,
+  "slug": "single-white-lily-art",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-029-single-white-lily-art.jpg"
+ },
+ {
+  "number": 30,
+  "slug": "basket-wildflowers-wooden-table",
+  "seed": 1003,
+  "kept": true,
+  "file": "b1-030-basket-wildflowers-wooden-table.jpg"
+ },
+ {
+  "number": 31,
+  "slug": "fishing-boats-red-sails",
+  "seed": 1007,
+  "kept": true,
+  "file": "b1-031-fishing-boats-red-sails.jpg"
+ },
+ {
+  "number": 32,
+  "slug": "man-straw-boater-hat",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-032-man-straw-boater-hat.jpg"
+ },
+ {
+  "number": 33,
+  "slug": "harbor-colorful-fishing-boats",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-033-harbor-colorful-fishing-boats.jpg"
+ },
+ {
+  "number": 34,
+  "slug": "paddle-steamer-wide-river",
+  "seed": 1007,
+  "kept": true,
+  "file": "b1-034-paddle-steamer-wide-river.jpg"
+ },
+ {
+  "number": 36,
+  "slug": "canal-barge-flower-boxes",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-036-canal-barge-flower-boxes.jpg"
+ },
+ {
+  "number": 37,
+  "slug": "two-women-white-dresses",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-037-two-women-white-dresses.jpg"
+ },
+ {
+  "number": 39,
+  "slug": "formal-french-garden-clipped",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-039-formal-french-garden-clipped.jpg"
+ },
+ {
+  "number": 40,
+  "slug": "rose-garden-archway-leading",
+  "seed": 1003,
+  "kept": true,
+  "file": "b1-040-rose-garden-archway-leading.jpg"
+ },
+ {
+  "number": 41,
+  "slug": "gardener-apron-pushing-wheelbarrow",
+  "seed": 1009,
+  "kept": true,
+  "file": "b1-041-gardener-apron-pushing-wheelbarrow.jpg"
+ },
+ {
+  "number": 42,
+  "slug": "glass-greenhouse-full-palms",
+  "seed": 1001,
+  "kept": true,
+  "file": "b1-042-glass-greenhouse-full-palms.jpg"
+ },
+ {
+  "number": 43,
+  "slug": "japanesestyle-garden-red-bridge",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-043-japanesestyle-garden-red-bridge.jpg"
+ },
+ {
+  "number": 44,
+  "slug": "kitchen-garden-rows-vegetables",
+  "seed": 1007,
+  "kept": true,
+  "file": "b1-044-kitchen-garden-rows-vegetables.jpg"
+ },
+ {
+  "number": 45,
+  "slug": "park-bench-flowering-chestnut",
+  "seed": 1003,
+  "kept": true,
+  "file": "b1-045-park-bench-flowering-chestnut.jpg"
+ },
+ {
+  "number": 46,
+  "slug": "topiary-garden-hedges-clipped",
+  "seed": 1007,
+  "kept": false,
+  "why": "topiary is an abstract jumble"
+ },
+ {
+  "number": 47,
+  "slug": "girl-watering-can-among",
+  "seed": 1006,
+  "kept": true,
+  "file": "b1-047-girl-watering-can-among.jpg"
+ },
+ {
+  "number": 48,
+  "slug": "stone-terrace-urns-geraniums",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-048-stone-terrace-urns-geraniums.jpg"
+ },
+ {
+  "number": 49,
+  "slug": "couple-strolling-arm-arm",
+  "seed": 1010,
+  "kept": false,
+  "why": "woman's face is off"
+ },
+ {
+  "number": 50,
+  "slug": "woman-long-coat-fur",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-050-woman-long-coat-fur.jpg"
+ },
+ {
+  "number": 51,
+  "slug": "families-strolling-sunny-park",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-051-families-strolling-sunny-park.jpg"
+ },
+ {
+  "number": 53,
+  "slug": "mother-daughter-matching-hats",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-053-mother-daughter-matching-hats.jpg"
+ },
+ {
+  "number": 54,
+  "slug": "people-strolling-umbrellas-rainy",
+  "seed": 1001,
+  "kept": true,
+  "file": "b1-054-people-strolling-umbrellas-rainy.jpg"
+ },
+ {
+  "number": 55,
+  "slug": "woman-striped-dress-walking",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-055-woman-striped-dress-walking.jpg"
+ },
+ {
+  "number": 56,
+  "slug": "two-friends-walking-country",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-056-two-friends-walking-country.jpg"
+ },
+ {
+  "number": 57,
+  "slug": "lady-walking-grand-staircase",
+  "seed": 1003,
+  "kept": true,
+  "file": "b1-057-lady-walking-grand-staircase.jpg"
+ },
+ {
+  "number": 58,
+  "slug": "children-rolling-hoops-park",
+  "seed": 1004,
+  "kept": true,
+  "file": "b1-058-children-rolling-hoops-park.jpg"
+ },
+ {
+  "number": 59,
+  "slug": "woman-bloomers-riding-bicycle",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-059-woman-bloomers-riding-bicycle.jpg"
+ },
+ {
+  "number": 60,
+  "slug": "racing-cyclist-leaning-turn",
+  "seed": 1000,
+  "kept": false,
+  "why": "cyclist reads as nude"
+ },
+ {
+  "number": 62,
+  "slug": "group-cyclists-riding-poplar",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-062-group-cyclists-riding-poplar.jpg"
+ },
+ {
+  "number": 65,
+  "slug": "postman-cycling-field-sunflowers",
+  "seed": 1004,
+  "kept": true,
+  "file": "b1-065-postman-cycling-field-sunflowers.jpg"
+ },
+ {
+  "number": 67,
+  "slug": "couple-waltzing-ballroom-crystal",
+  "seed": 1004,
+  "kept": false,
+  "why": "dark smudge on the back of the woman's head reads as a face"
+ },
+ {
+  "number": 70,
+  "slug": "woman-dancing-long-flowing",
+  "seed": 1001,
+  "kept": true,
+  "file": "b1-070-woman-dancing-long-flowing.jpg"
+ },
+ {
+  "number": 71,
+  "slug": "tango-couple-elegant-pose",
+  "seed": 1006,
+  "kept": true,
+  "file": "b1-071-tango-couple-elegant-pose.jpg"
+ },
+ {
+  "number": 73,
+  "slug": "flamenco-dancer-red-ruffled",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-073-flamenco-dancer-red-ruffled.jpg"
+ },
+ {
+  "number": 75,
+  "slug": "matterhorn-alpine-meadow-wildflowers",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-075-matterhorn-alpine-meadow-wildflowers.jpg"
+ },
+ {
+  "number": 76,
+  "slug": "tuscan-hill-town-cypress",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-076-tuscan-hill-town-cypress.jpg"
+ },
+ {
+  "number": 77,
+  "slug": "white-cliffs-blue-sea",
+  "seed": 1003,
+  "kept": false,
+  "why": "too photographic"
+ },
+ {
+  "number": 78,
+  "slug": "norwegian-fjord-steep-green",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-078-norwegian-fjord-steep-green.jpg"
+ },
+ {
+  "number": 79,
+  "slug": "scottish-highlands-purple-heather",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-079-scottish-highlands-purple-heather.jpg"
+ },
+ {
+  "number": 80,
+  "slug": "dutch-polder-canal-windmills",
+  "seed": 1003,
+  "kept": true,
+  "file": "b1-080-dutch-polder-canal-windmills.jpg"
+ },
+ {
+  "number": 81,
+  "slug": "greek-island-village-white",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-081-greek-island-village-white.jpg"
+ },
+ {
+  "number": 82,
+  "slug": "danube-winding-valley-monastery",
+  "seed": 1004,
+  "kept": false,
+  "why": "too photographic"
+ },
+ {
+  "number": 83,
+  "slug": "provence-village-hilltop-olive",
+  "seed": 1004,
+  "kept": true,
+  "file": "b1-083-provence-village-hilltop-olive.jpg"
+ },
+ {
+  "number": 84,
+  "slug": "snowy-peaks-dolomites-reflected",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-084-snowy-peaks-dolomites-reflected.jpg"
+ },
+ {
+  "number": 85,
+  "slug": "irish-coastline-green-fields",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-085-irish-coastline-green-fields.jpg"
+ },
+ {
+  "number": 86,
+  "slug": "black-forest-valley-timbered",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-086-black-forest-valley-timbered.jpg"
+ },
+ {
+  "number": 88,
+  "slug": "ladies-long-gowns-conversing",
+  "seed": 1003,
+  "kept": true,
+  "file": "b1-088-ladies-long-gowns-conversing.jpg"
+ },
+ {
+  "number": 89,
+  "slug": "elegant-drawing-room-silk",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-089-elegant-drawing-room-silk.jpg"
+ },
+ {
+  "number": 90,
+  "slug": "painter-easel-sunlit-studio",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-090-painter-easel-sunlit-studio.jpg"
+ },
+ {
+  "number": 92,
+  "slug": "woman-reading-letter-chaise",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-092-woman-reading-letter-chaise.jpg"
+ },
+ {
+  "number": 93,
+  "slug": "tea-table-set-porcelain",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-093-tea-table-set-porcelain.jpg"
+ },
+ {
+  "number": 95,
+  "slug": "fairytale-castle-white-towers",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-095-fairytale-castle-white-towers.jpg"
+ },
+ {
+  "number": 96,
+  "slug": "loire-chateau-reflected-river",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-096-loire-chateau-reflected-river.jpg"
+ },
+ {
+  "number": 97,
+  "slug": "ruined-castle-crag-river",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-097-ruined-castle-crag-river.jpg"
+ },
+ {
+  "number": 98,
+  "slug": "castle-rocky-island-reached",
+  "seed": 1003,
+  "kept": true,
+  "file": "b1-098-castle-rocky-island-reached.jpg"
+ },
+ {
+  "number": 99,
+  "slug": "moated-castle-round-towers",
+  "seed": 1004,
+  "kept": true,
+  "file": "b1-099-moated-castle-round-towers.jpg"
+ },
+ {
+  "number": 100,
+  "slug": "rhine-castle-vineyards-river",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-100-rhine-castle-vineyards-river.jpg"
+ },
+ {
+  "number": 101,
+  "slug": "scottish-castle-loch-shore",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-101-scottish-castle-loch-shore.jpg"
+ },
+ {
+  "number": 103,
+  "slug": "racing-yacht-heeling-full",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-103-racing-yacht-heeling-full.jpg"
+ },
+ {
+  "number": 105,
+  "slug": "threemasted-sailing-ship-anchor",
+  "seed": 1003,
+  "kept": false,
+  "why": "ship muddled"
+ },
+ {
+  "number": 106,
+  "slug": "regatta-small-sailboats-colored",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-106-regatta-small-sailboats-colored.jpg"
+ },
+ {
+  "number": 107,
+  "slug": "paddle-steamer-lake-mountains",
+  "seed": 1007,
+  "kept": true,
+  "file": "b1-107-paddle-steamer-lake-mountains.jpg"
+ },
+ {
+  "number": 108,
+  "slug": "steamship-deck-deck-chairs",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-108-steamship-deck-deck-chairs.jpg"
+ },
+ {
+  "number": 109,
+  "slug": "tall-ship-sailing-stormy",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-109-tall-ship-sailing-stormy.jpg"
+ },
+ {
+  "number": 110,
+  "slug": "steam-yacht-moored-riviera",
+  "seed": 1000,
+  "kept": false,
+  "why": "weak composition"
+ },
+ {
+  "number": 111,
+  "slug": "scientist-white-coat-examining",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-111-scientist-white-coat-examining.jpg"
+ },
+ {
+  "number": 113,
+  "slug": "astronomer-looking-large-brass",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-113-astronomer-looking-large-brass.jpg"
+ },
+ {
+  "number": 115,
+  "slug": "woman-chemist-pouring-colored",
+  "seed": 1009,
+  "kept": true,
+  "file": "b1-115-woman-chemist-pouring-colored.jpg"
+ },
+ {
+  "number": 116,
+  "slug": "cabinet-curiosities-butterflies-shells",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-116-cabinet-curiosities-butterflies-shells.jpg"
+ },
+ {
+  "number": 119,
+  "slug": "grand-library-tall-wooden",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-119-grand-library-tall-wooden.jpg"
+ },
+ {
+  "number": 120,
+  "slug": "young-woman-reading-long",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-120-young-woman-reading-long.jpg"
+ },
+ {
+  "number": 121,
+  "slug": "spiral-staircase-library-lined",
+  "seed": 1001,
+  "kept": true,
+  "file": "b1-121-spiral-staircase-library-lined.jpg"
+ },
+ {
+  "number": 123,
+  "slug": "old-librarian-spectacles-shelving",
+  "seed": 1004,
+  "kept": true,
+  "file": "b1-123-old-librarian-spectacles-shelving.jpg"
+ },
+ {
+  "number": 124,
+  "slug": "reading-room-arched-windows",
+  "seed": 1000,
+  "kept": true,
+  "file": "b1-124-reading-room-arched-windows.jpg"
+ },
+ {
+  "number": 125,
+  "slug": "child-reading-picture-book",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-125-child-reading-picture-book.jpg"
+ },
+ {
+  "number": 127,
+  "slug": "silver-airship-floating-rooftops",
+  "seed": 1006,
+  "kept": true,
+  "file": "b1-127-silver-airship-floating-rooftops.jpg"
+ },
+ {
+  "number": 128,
+  "slug": "airship-moored-tall-mast",
+  "seed": 1005,
+  "kept": false,
+  "why": "airship and mast muddled"
+ },
+ {
+  "number": 129,
+  "slug": "airship-sailing-alps-among",
+  "seed": 1003,
+  "kept": false,
+  "why": "airship is a white blob"
+ },
+ {
+  "number": 130,
+  "slug": "airship-harbor-full-steamships",
+  "seed": 1003,
+  "kept": true,
+  "file": "b1-130-airship-harbor-full-steamships.jpg"
+ },
+ {
+  "number": 132,
+  "slug": "airship-huge-hangar-doors",
+  "seed": 1003,
+  "kept": false,
+  "why": "hangar muddled"
+ },
+ {
+  "number": 133,
+  "slug": "two-airships-crossing-sunset",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-133-two-airships-crossing-sunset.jpg"
+ },
+ {
+  "number": 134,
+  "slug": "airship-flying-castle-hill",
+  "seed": 1002,
+  "kept": true,
+  "file": "b1-134-airship-flying-castle-hill.jpg"
+ }
+]
