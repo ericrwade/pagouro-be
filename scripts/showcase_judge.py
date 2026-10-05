@@ -16,13 +16,17 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ENV = os.path.join(os.path.dirname(HERE), "..", "PAGOURO_BUILD", ".env")
 RUBRIC = ("You are judging a generated picture against the caption it was made from. Be strict.\n"
           "Caption: {caption}\n"
-          "Answer in JSON only, with keys subject, style, lettering, appeal, note.\n"
+          "Answer in JSON only, with keys subject, style, lettering, faces, appeal, note.\n"
           "subject: true only if the main thing the caption asks for is clearly recognisable in the picture as a person "
           "would name it; false otherwise.\n"
           "style: true if the picture looks like a lithographic poster of around 1900 (flat colour planes, bold outlines, "
           "poster paper), false if it looks like a photograph, a 3D render, or a modern digital painting.\n"
           "lettering: true if the picture contains any lettering, words or word-like marks (a title band, a caption line, "
           "a signature block, scribbles that imitate text); false if there is none.\n"
+          "faces: \"none\" if no human face is visible; \"good\" only if EVERY visible human face is well formed "
+          "(two matching eyes level with each other, one nose, one mouth, natural proportions, no smears or melted "
+          "features), tiny distant faces may be simple; \"bad\" if any face is distorted, lopsided, smeared, doubled "
+          "or missing features. Be very strict: if in doubt, \"bad\".\n"
           "appeal: an integer 1-5 for how attractive and well composed the picture is as a standalone image to post "
           "(5 = striking, clean, pleasing; 1 = ugly, broken anatomy, muddled).\n"
           "note: one short sentence saying what you actually see.")
@@ -63,7 +67,7 @@ def judge_one(key, model, path, caption, tries=3):
             txt = d["choices"][0]["message"]["content"].strip()
             txt = txt[txt.find("{"): txt.rfind("}") + 1]
             v = json.loads(txt)
-            return {"subject": bool(v.get("subject")), "style": bool(v.get("style")), "lettering": bool(v.get("lettering")),
+            return {"subject": bool(v.get("subject")), "style": bool(v.get("style")), "lettering": bool(v.get("lettering")), "faces": str(v.get("faces", "none")).lower(),
                     "appeal": int(v.get("appeal") or 0), "note": str(v.get("note", ""))[:200],
                     "usage": {k: d.get("usage", {}).get(k) for k in ("prompt_tokens", "completion_tokens")}}
         except Exception as e:  # noqa: BLE001
@@ -122,7 +126,7 @@ def main():
             v = done.get(m["file"])
             if not v:
                 continue
-            scored.append(((v["subject"], not v["lettering"], v["style"], v["appeal"], -m["seed"]), m, v))
+            scored.append(((v["subject"], v.get("faces", "none") != "bad", not v["lettering"], v["style"], v["appeal"], -m["seed"]), m, v))
         if not scored:
             print("NO VERDICTS for", num)
             continue
@@ -137,7 +141,7 @@ def main():
         chosen.append({**{k: best[k] for k in ("number", "slug", "category", "caption", "prompt", "negative", "seed", "steps", "guidance", "sampler", "size")},
                        "file_raw": best["file"], "candidate_seeds": [c["seed"] for c in cands],
                        "chosen_why": "; ".join(why) + (f" (others: {others})" if others else ""),
-                       "subject_failed": not bv["subject"], "lettering": bv["lettering"], "style": bv["style"], "appeal": bv["appeal"], "judge_note": bv["note"]})
+                       "subject_failed": not bv["subject"], "faces": bv.get("faces", "none"), "lettering": bv["lettering"], "style": bv["style"], "appeal": bv["appeal"], "judge_note": bv["note"]})
     with io.open(os.path.join(a.out, "chosen.jsonl"), "w", encoding="utf-8", newline="\n") as f:
         for c in chosen:
             f.write(json.dumps(c, ensure_ascii=False) + "\n")

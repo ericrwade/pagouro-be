@@ -12,6 +12,8 @@ from diffusers import StableDiffusionPipeline, DPMSolverMultistepScheduler, UNet
 from huggingface_hub import hf_hub_download
 
 caps_path, out_dir, seeds = sys.argv[1], sys.argv[2], [int(s) for s in sys.argv[3].split()]
+# optional 4th argument: the seed list for captions marked "people": true (faces need more tries)
+people_seeds = [int(s) for s in sys.argv[4].split()] if len(sys.argv) > 4 else seeds
 BASE = "/workspace/sc/base"
 if not os.path.isdir(os.path.join(BASE, "unet")):
     f = hf_hub_download("Pagouro/pagouro-be-1.0", "pagouro-be-1.0-fp16.safetensors")
@@ -31,7 +33,7 @@ meta = json.load(open(meta_path)) if os.path.exists(meta_path) else []
 done = {m["file"] for m in meta}
 t0 = time.time()
 for r in rows:
-    for s in seeds:
+    for s in (people_seeds if r.get("people") else seeds):
         fn = f"{r['number']:03d}-{r['slug']}_s{s}.png"
         if fn in done:
             continue
@@ -43,7 +45,7 @@ for r in rows:
                      "caption": r["caption"], "prompt": r["prompt"], "negative": r["negative"], "seed": s,
                      "steps": 30, "guidance": 7.0, "sampler": "DPM++ 2M (diffusers DPMSolverMultistepScheduler)",
                      "size": 512})
-    if r["number"] % 20 == 0:
+    if r["number"] % 10 == 0:
         json.dump(meta, open(meta_path, "w"), indent=1)
         print(f"{r['number']}/{len(rows)} prompts, {len(meta)} pictures, {time.time()-t0:.0f}s", flush=True)
 json.dump(meta, open(meta_path, "w"), indent=1)
